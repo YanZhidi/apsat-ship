@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.NavigationInformationHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="imo_number" jdbcType="VARCHAR" property="imoNumber" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="rerative_wind" jdbcType="VARCHAR" property="rerativeWind" />
+    <result column="sensor_depth" jdbcType="VARCHAR" property="sensorDepth" />
+    <result column="swsd" jdbcType="VARCHAR" property="swsd" />
+    <result column="sind_speed" jdbcType="VARCHAR" property="sindSpeed" />
+    <result column="total_cumulative_ground_distance" jdbcType="VARCHAR" property="totalCumulativeGroundDistance" />
+    <result column="ground_distance_since_reset" jdbcType="VARCHAR" property="groundDistanceSinceReset" />
+    <result column="mmsi_number" jdbcType="VARCHAR" property="mmsiNumber" />
+    <result column="navigational_status" jdbcType="VARCHAR" property="navigationalStatus" />
+    <result column="steering_speed" jdbcType="VARCHAR" property="steeringSpeed" />
+    <result column="ground_speed" jdbcType="VARCHAR" property="groundSpeed" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="cog" jdbcType="VARCHAR" property="cog" />
+    <result column="ship_head" jdbcType="VARCHAR" property="shipHead" />
+    <result column="call_sign" jdbcType="VARCHAR" property="callSign" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="eta" jdbcType="TIMESTAMP" property="eta" />
+    <result column="maximum_static_draft" jdbcType="VARCHAR" property="maximumStaticDraft" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="reserve01" jdbcType="VARCHAR" property="reserve01" />
+    <result column="reserve02" jdbcType="VARCHAR" property="reserve02" />
+    <result column="data_sync_time" jdbcType="TIMESTAMP" property="dataSyncTime" />
+    <result column="departure" property="departure" jdbcType="VARCHAR" />
+    <result column="departure_time" property="departureTime" jdbcType="TIMESTAMP" />
+    <result column="in_time" property="inTime" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, imo_number, `name`, device_name, rerative_wind, sensor_depth, swsd, sind_speed, 
+    total_cumulative_ground_distance, ground_distance_since_reset, mmsi_number, navigational_status, 
+    steering_speed, ground_speed, longitude, latitude, cog, ship_head, call_sign, `type`, 
+    eta, maximum_static_draft, destination, reserve01, reserve02, data_sync_time,departure,departure_time,in_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_navigation_information_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO">
+    select
+      count(*)
+    from
+      t_navigation_information_history
+    where mmsi_number=#{mmsiNumber}
+      and data_sync_time=#{dataSyncTime}
+  </select>
+  <select id="getNavigationHistory" resultType="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    t_navigation_information_history
+    where mmsi_number =#{mmsiNumber} and data_sync_time=#{dataSyncTime}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_navigation_information_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO" useGeneratedKeys="true">
+    insert into t_navigation_information_history (imo_number, `name`, device_name,
+                                                  rerative_wind, sensor_depth, swsd,
+                                                  sind_speed, total_cumulative_ground_distance,
+                                                  ground_distance_since_reset, mmsi_number, navigational_status,
+                                                  steering_speed, ground_speed, longitude,
+                                                  latitude, cog, ship_head,
+                                                  call_sign, `type`, eta,
+                                                  maximum_static_draft, destination, reserve01,
+                                                  reserve02, data_sync_time,departure,departure_time,in_time)
+    values (#{imoNumber,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR},
+            #{rerativeWind,jdbcType=VARCHAR}, #{sensorDepth,jdbcType=VARCHAR}, #{swsd,jdbcType=VARCHAR},
+            #{sindSpeed,jdbcType=VARCHAR}, #{totalCumulativeGroundDistance,jdbcType=VARCHAR},
+            #{groundDistanceSinceReset,jdbcType=VARCHAR}, #{mmsiNumber,jdbcType=VARCHAR}, #{navigationalStatus,jdbcType=VARCHAR},
+            #{steeringSpeed,jdbcType=VARCHAR}, #{groundSpeed,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR},
+            #{latitude,jdbcType=VARCHAR}, #{cog,jdbcType=VARCHAR}, #{shipHead,jdbcType=VARCHAR},
+            #{callSign,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{eta,jdbcType=TIMESTAMP},
+            #{maximumStaticDraft,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{reserve01,jdbcType=VARCHAR},
+            #{reserve02,jdbcType=VARCHAR}, #{dataSyncTime,jdbcType=TIMESTAMP},#{departure,jdbcType=VARCHAR},#{departureTime,jdbcType=TIMESTAMP},#{inTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO" useGeneratedKeys="true">
+    insert into t_navigation_information_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imoNumber != null">
+        imo_number,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="rerativeWind != null">
+        rerative_wind,
+      </if>
+      <if test="sensorDepth != null">
+        sensor_depth,
+      </if>
+      <if test="swsd != null">
+        swsd,
+      </if>
+      <if test="sindSpeed != null">
+        sind_speed,
+      </if>
+      <if test="totalCumulativeGroundDistance != null">
+        total_cumulative_ground_distance,
+      </if>
+      <if test="groundDistanceSinceReset != null">
+        ground_distance_since_reset,
+      </if>
+      <if test="mmsiNumber != null">
+        mmsi_number,
+      </if>
+      <if test="navigationalStatus != null">
+        navigational_status,
+      </if>
+      <if test="steeringSpeed != null">
+        steering_speed,
+      </if>
+      <if test="groundSpeed != null">
+        ground_speed,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="cog != null">
+        cog,
+      </if>
+      <if test="shipHead != null">
+        ship_head,
+      </if>
+      <if test="callSign != null">
+        call_sign,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="eta != null">
+        eta,
+      </if>
+      <if test="maximumStaticDraft != null">
+        maximum_static_draft,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="reserve01 != null">
+        reserve01,
+      </if>
+      <if test="reserve02 != null">
+        reserve02,
+      </if>
+      <if test="dataSyncTime != null">
+        data_sync_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imoNumber != null">
+        #{imoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="rerativeWind != null">
+        #{rerativeWind,jdbcType=VARCHAR},
+      </if>
+      <if test="sensorDepth != null">
+        #{sensorDepth,jdbcType=VARCHAR},
+      </if>
+      <if test="swsd != null">
+        #{swsd,jdbcType=VARCHAR},
+      </if>
+      <if test="sindSpeed != null">
+        #{sindSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="totalCumulativeGroundDistance != null">
+        #{totalCumulativeGroundDistance,jdbcType=VARCHAR},
+      </if>
+      <if test="groundDistanceSinceReset != null">
+        #{groundDistanceSinceReset,jdbcType=VARCHAR},
+      </if>
+      <if test="mmsiNumber != null">
+        #{mmsiNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="navigationalStatus != null">
+        #{navigationalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="steeringSpeed != null">
+        #{steeringSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="groundSpeed != null">
+        #{groundSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="cog != null">
+        #{cog,jdbcType=VARCHAR},
+      </if>
+      <if test="shipHead != null">
+        #{shipHead,jdbcType=VARCHAR},
+      </if>
+      <if test="callSign != null">
+        #{callSign,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="eta != null">
+        #{eta,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maximumStaticDraft != null">
+        #{maximumStaticDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve01 != null">
+        #{reserve01,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve02 != null">
+        #{reserve02,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSyncTime != null">
+        #{dataSyncTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO">
+    update t_navigation_information_history
+    <set>
+      <if test="imoNumber != null">
+        imo_number = #{imoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="rerativeWind != null">
+        rerative_wind = #{rerativeWind,jdbcType=VARCHAR},
+      </if>
+      <if test="sensorDepth != null">
+        sensor_depth = #{sensorDepth,jdbcType=VARCHAR},
+      </if>
+      <if test="swsd != null">
+        swsd = #{swsd,jdbcType=VARCHAR},
+      </if>
+      <if test="sindSpeed != null">
+        sind_speed = #{sindSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="totalCumulativeGroundDistance != null">
+        total_cumulative_ground_distance = #{totalCumulativeGroundDistance,jdbcType=VARCHAR},
+      </if>
+      <if test="groundDistanceSinceReset != null">
+        ground_distance_since_reset = #{groundDistanceSinceReset,jdbcType=VARCHAR},
+      </if>
+      <if test="mmsiNumber != null">
+        mmsi_number = #{mmsiNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="navigationalStatus != null">
+        navigational_status = #{navigationalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="steeringSpeed != null">
+        steering_speed = #{steeringSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="groundSpeed != null">
+        ground_speed = #{groundSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="cog != null">
+        cog = #{cog,jdbcType=VARCHAR},
+      </if>
+      <if test="shipHead != null">
+        ship_head = #{shipHead,jdbcType=VARCHAR},
+      </if>
+      <if test="callSign != null">
+        call_sign = #{callSign,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="eta != null">
+        eta = #{eta,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maximumStaticDraft != null">
+        maximum_static_draft = #{maximumStaticDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve01 != null">
+        reserve01 = #{reserve01,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve02 != null">
+        reserve02 = #{reserve02,jdbcType=VARCHAR},
+      </if>
+      <if test="dataSyncTime != null">
+        data_sync_time = #{dataSyncTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zkthinke.modules.apsat.ship.domain.NavigationInformationHistoryPO">
+    update t_navigation_information_history
+    set imo_number = #{imoNumber,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
+        device_name = #{deviceName,jdbcType=VARCHAR},
+        rerative_wind = #{rerativeWind,jdbcType=VARCHAR},
+        sensor_depth = #{sensorDepth,jdbcType=VARCHAR},
+        swsd = #{swsd,jdbcType=VARCHAR},
+        sind_speed = #{sindSpeed,jdbcType=VARCHAR},
+        total_cumulative_ground_distance = #{totalCumulativeGroundDistance,jdbcType=VARCHAR},
+        ground_distance_since_reset = #{groundDistanceSinceReset,jdbcType=VARCHAR},
+        mmsi_number = #{mmsiNumber,jdbcType=VARCHAR},
+        navigational_status = #{navigationalStatus,jdbcType=VARCHAR},
+        steering_speed = #{steeringSpeed,jdbcType=VARCHAR},
+        ground_speed = #{groundSpeed,jdbcType=VARCHAR},
+        longitude = #{longitude,jdbcType=VARCHAR},
+        latitude = #{latitude,jdbcType=VARCHAR},
+        cog = #{cog,jdbcType=VARCHAR},
+        ship_head = #{shipHead,jdbcType=VARCHAR},
+        call_sign = #{callSign,jdbcType=VARCHAR},
+        `type` = #{type,jdbcType=VARCHAR},
+        eta = #{eta,jdbcType=TIMESTAMP},
+        maximum_static_draft = #{maximumStaticDraft,jdbcType=VARCHAR},
+        destination = #{destination,jdbcType=VARCHAR},
+        reserve01 = #{reserve01,jdbcType=VARCHAR},
+        reserve02 = #{reserve02,jdbcType=VARCHAR},
+        data_sync_time = #{dataSyncTime,jdbcType=TIMESTAMP},
+        departure =#{departure,jdbcType=VARCHAR},
+        departure_time = #{departureTime,jdbcType=TIMESTAMP},
+        in_time = #{inTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getLastNavigationInfomation" resultType="java.util.Date">
+    select
+      departure_time
+    from t_navigation_information_history
+    where imo_number = #{imoNumber}
+    order by data_sync_time desc
+    limit 0,1
+  </select>
+
+  <select id="getLastNavigationId" resultType="java.lang.Integer">
+    select
+      id
+    from t_navigation_information_history
+    where imo_number = #{imoNumber}
+    order by data_sync_time desc
+    limit 0,1
+  </select>
+
+  <select id="getCountNavigationHistory" resultType="java.lang.Integer">
+    select count(*) from t_navigation_information_history
+    where imo_number =#{imoNumber}
+  </select>
+
+  <select id="getLastNavigationInfomationById" resultType="java.lang.String">
+    select
+      destination
+    from
+      t_navigation_information_history
+    where id=#{id}
+  </select>
+
+</mapper>

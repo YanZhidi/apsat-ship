@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipRoutePlanEnclosureDao">
+
+    <select id="findAll" resultType="ShipRoutePlanEnclosure">
+        SELECT * FROM t_ship_route_plan_enclosure a left join t_ship_route_plan b on a.id=b.id
+        <if test="shipId != null and shipId != ''">
+            where b.ship_id = #{shipId,jdbcType=VARCHAR} and b.state='1'
+        </if>
+        order by a.order_num asc
+    </select>
+
+    <select id="findAllDetail" resultType="shipRoutePlanDetail">
+        SELECT * FROM t_ship_route_plan_detail a left join t_ship_route_plan b on a.id=b.id
+        <if test="shipId != null and shipId != ''">
+            where b.ship_id = #{shipId,jdbcType=VARCHAR} and b.state='1'
+        </if>
+        order by a.order_num asc
+    </select>
+
+    <select id="getPlanDetailByPlanId" resultType="com.zkthinke.modules.apsat.ship.domain.ShipRoutePlanDetail">
+        SELECT * FROM t_ship_route_plan_detail
+        WHERE id = #{id}
+        ORDER BY order_num ASC
+    </select>
+
+    <select id="findAllDanger" resultType="com.zkthinke.modules.apsat.ship.domain.ShipRoutePlanDanger">
+        SELECT * FROM t_ship_route_plan_danger a left join t_ship_route_plan b on a.plan_id=b.id
+        <if test="shipId != null and shipId != ''">
+            where b.ship_id = #{shipId,jdbcType=VARCHAR} and b.state='1'
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipMapper">
+    <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.ShipPO">
+        <!--@mbg.generated-->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="mmsi_number" jdbcType="VARCHAR" property="mmsiNumber" />
+        <result column="call_sign" jdbcType="VARCHAR" property="callSign" />
+        <result column="imo_number" jdbcType="VARCHAR" property="imoNumber" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="create_time" jdbcType="BIGINT" property="createTime" />
+        <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+        <result column="last_detail_id" jdbcType="BIGINT" property="lastDetailId" />
+        <result column="name_pinyin" jdbcType="VARCHAR" property="namePinyin" />
+        <result column="last_device_id" jdbcType="BIGINT" property="lastDeviceId" />
+        <result column="last_device_stime" jdbcType="VARCHAR" property="lastDeviceStime" />
+        <result column="last_detail_stime" jdbcType="VARCHAR" property="lastDetailStime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, mmsi_number, call_sign, imo_number, `type`, create_time, update_time,
+        last_detail_id, name_pinyin, last_device_id, last_device_stime, last_detail_stime
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List" />
+        from t_ship
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from t_ship
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipPO" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_ship (id,`name`, mmsi_number, call_sign,
+        imo_number, `type`, create_time,
+        update_time, last_detail_id, name_pinyin,
+        last_device_id, last_device_stime, last_detail_stime
+        )
+        values (#{id},#{name,jdbcType=VARCHAR}, #{mmsiNumber,jdbcType=VARCHAR}, #{callSign,jdbcType=VARCHAR},
+        #{imoNumber,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT},
+        #{updateTime,jdbcType=BIGINT}, #{lastDetailId,jdbcType=BIGINT}, #{namePinyin,jdbcType=VARCHAR},
+        #{lastDeviceId,jdbcType=BIGINT}, #{lastDeviceStime,jdbcType=VARCHAR}, #{lastDetailStime,jdbcType=VARCHAR}
+        ) ON DUPLICATE KEY UPDATE last_detail_id = #{lastDetailId}
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipPO" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_ship
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="mmsiNumber != null">
+                mmsi_number,
+            </if>
+            <if test="callSign != null">
+                call_sign,
+            </if>
+            <if test="imoNumber != null">
+                imo_number,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="lastDetailId != null">
+                last_detail_id,
+            </if>
+            <if test="namePinyin != null">
+                name_pinyin,
+            </if>
+            <if test="lastDeviceId != null">
+                last_device_id,
+            </if>
+            <if test="lastDeviceStime != null">
+                last_device_stime,
+            </if>
+            <if test="lastDetailStime != null">
+                last_detail_stime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mmsiNumber != null">
+                #{mmsiNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="callSign != null">
+                #{callSign,jdbcType=VARCHAR},
+            </if>
+            <if test="imoNumber != null">
+                #{imoNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=BIGINT},
+            </if>
+            <if test="lastDetailId != null">
+                #{lastDetailId,jdbcType=BIGINT},
+            </if>
+            <if test="namePinyin != null">
+                #{namePinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="lastDeviceId != null">
+                #{lastDeviceId,jdbcType=BIGINT},
+            </if>
+            <if test="lastDeviceStime != null">
+                #{lastDeviceStime,jdbcType=VARCHAR},
+            </if>
+            <if test="lastDetailStime != null">
+                #{lastDetailStime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipPO">
+        <!--@mbg.generated-->
+        update t_ship
+        <set>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mmsiNumber != null">
+                mmsi_number = #{mmsiNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="callSign != null">
+                call_sign = #{callSign,jdbcType=VARCHAR},
+            </if>
+            <if test="imoNumber != null">
+                imo_number = #{imoNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                `type` = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=BIGINT},
+            </if>
+            <if test="lastDetailId != null">
+                last_detail_id = #{lastDetailId,jdbcType=BIGINT},
+            </if>
+            <if test="namePinyin != null">
+                name_pinyin = #{namePinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="lastDeviceId != null">
+                last_device_id = #{lastDeviceId,jdbcType=BIGINT},
+            </if>
+            <if test="lastDeviceStime != null">
+                last_device_stime = #{lastDeviceStime,jdbcType=VARCHAR},
+            </if>
+            <if test="lastDetailStime != null">
+                last_detail_stime = #{lastDetailStime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipPO">
+        <!--@mbg.generated-->
+        update t_ship
+        set `name` = #{name,jdbcType=VARCHAR},
+        mmsi_number = #{mmsiNumber,jdbcType=VARCHAR},
+        call_sign = #{callSign,jdbcType=VARCHAR},
+        imo_number = #{imoNumber,jdbcType=VARCHAR},
+        `type` = #{type,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=BIGINT},
+        update_time = #{updateTime,jdbcType=BIGINT},
+        last_detail_id = #{lastDetailId,jdbcType=BIGINT},
+        name_pinyin = #{namePinyin,jdbcType=VARCHAR},
+        last_device_id = #{lastDeviceId,jdbcType=BIGINT},
+        last_device_stime = #{lastDeviceStime,jdbcType=VARCHAR},
+        last_detail_stime = #{lastDetailStime,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateLastDetailId">
+        update t_ship
+        set last_detail_id = #{lastDetailId}
+        where id = #{id}
+    </update>
+
+    <select id="selectShipByMmsi" resultType="java.lang.Long">
+        select id
+        from t_ship
+        where mmsi_number =#{mmsiNumber}
+    </select>
+    <select id="selectShipByRoleAndUserId" resultType="com.zkthinke.modules.apsat.ship.domain.ShipPO">
+        select
+            ts.id id,
+            ts.`name` name,
+            ts.mmsi_number mmsiNumber,
+            ts.call_sign callSign,
+            ts.imo_number imoNumber,
+            ts.type type,
+            ts.create_time createTime,
+            ts.update_time updateTime,
+            ts.last_detail_id lastDetailId,
+            ts.name_pinyin namePinyin,
+            ts.last_device_id lastDeviceId,
+            ts.last_device_stime lastDeviceStime,
+            ts.last_detail_stime lastDetailStime
+        from t_ship ts
+        LEFT JOIN roles_ships rs ON ts.id = rs.ship_id
+        LEFT JOIN role r ON rs.role_id = r.id
+        LEFT JOIN users_roles us ON us.role_id = r.id
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="selectShipInfoByMmsi" resultMap="BaseResultMap">
+        select
+        ts.id id,
+        ts.`name` name,
+        ts.mmsi_number mmsiNumber,
+        ts.call_sign callSign,
+        ts.imo_number imoNumber,
+        ts.type type,
+        ts.create_time createTime,
+        ts.update_time updateTime,
+        ts.last_detail_id lastDetailId,
+        ts.name_pinyin namePinyin,
+        ts.last_device_id lastDeviceId,
+        ts.last_device_stime lastDeviceStime,
+        ts.last_detail_stime lastDetailStime
+        from t_ship as ts
+        where mmsi_number =#{mmsiNumber}
+    </select>
+</mapper>

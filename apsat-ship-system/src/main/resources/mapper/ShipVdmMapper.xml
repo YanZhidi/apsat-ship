@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipVdmMapper">
+
+    <sql id="BaseField">
+ship_id, mmsi_number, message_id, navigational_status, steering_speed,
+sog, position_accuracy, longitude, latitude, cog, true_heading,
+utc_time_stamp, specific_manoeuvre_indicator, raim_flag,
+communication_status, status_of_current_gnss_position,
+ais_version_indicator, imo_number, call_sign, `name`, ship_type,
+ship_dimensions, epfd_type, eta, max_static_draft, destination, dte,
+vdm1_time, vdm2_time, vdm3_time, vdm5_time, vdm18_time, vdm19_time, vdm24_time, vdm27_time, 
+position_update_time, static_update_time, update_time
+    </sql>
+    <select id="getShipVdmListByShipId" resultType="com.zkthinke.modules.apsat.ship.domain.ShipVdmPO">
+        SELECT <include refid="BaseField"></include>
+        FROM t_ship_vdm
+        WHERE ship_id = #{shipId}
+        AND (position_update_time >= ( SELECT MAX( update_time ) - 360000 FROM t_ship_vdm WHERE ship_id = #{shipId})
+        OR static_update_time >= ( SELECT MAX( update_time ) - 360000 FROM t_ship_vdm WHERE ship_id = #{shipId}))
+    </select>
+    <insert id="upsertVdm1List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            navigational_status = values(navigational_status),steering_speed = values(steering_speed),
+            sog = values(sog),position_accuracy = values(position_accuracy),longitude = values(longitude),
+            latitude = values(latitude),cog = values(cog),true_heading = values(true_heading),
+            utc_time_stamp = values(utc_time_stamp),specific_manoeuvre_indicator = values(specific_manoeuvre_indicator),
+            raim_flag = values(raim_flag),communication_status = values(communication_status),
+            vdm1_time = values(vdm1_time),position_update_time = values(position_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm2List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+        message_id = values(message_id),
+        navigational_status = values(navigational_status),steering_speed = values(steering_speed),
+        sog = values(sog),position_accuracy = values(position_accuracy),longitude = values(longitude),
+        latitude = values(latitude),cog = values(cog),true_heading = values(true_heading),
+        utc_time_stamp = values(utc_time_stamp),specific_manoeuvre_indicator = values(specific_manoeuvre_indicator),
+        raim_flag = values(raim_flag),communication_status = values(communication_status),
+        vdm2_time = values(vdm2_time),position_update_time = values(position_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm3List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+        message_id = values(message_id),
+        navigational_status = values(navigational_status),steering_speed = values(steering_speed),
+        sog = values(sog),position_accuracy = values(position_accuracy),longitude = values(longitude),
+        latitude = values(latitude),cog = values(cog),true_heading = values(true_heading),
+        utc_time_stamp = values(utc_time_stamp),specific_manoeuvre_indicator = values(specific_manoeuvre_indicator),
+        raim_flag = values(raim_flag),communication_status = values(communication_status),
+        vdm3_time = values(vdm3_time),position_update_time = values(position_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm5List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            ais_version_indicator = values(ais_version_indicator),imo_number = values(imo_number),
+            call_sign = values(call_sign),name = values(name),ship_type = values(ship_type),ship_dimensions = values(ship_dimensions),
+            epfd_type = values(epfd_type),eta = values(eta),max_static_draft = values(max_static_draft),
+            destination = values(destination),dte = values(dte),
+            vdm5_time = values(vdm5_time),static_update_time = values(static_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm18List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            sog = values(sog),position_accuracy = values(position_accuracy),longitude = values(longitude),latitude = values(latitude),
+            cog = values(cog),true_heading = values(true_heading),utc_time_stamp = values(utc_time_stamp),
+            vdm18_time = values(vdm18_time),position_update_time = values(position_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm19List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            sog = values(sog),position_accuracy = values(position_accuracy),longitude = values(longitude),latitude = values(latitude),
+            cog = values(cog),true_heading = values(true_heading),utc_time_stamp = values(utc_time_stamp),
+            name = values(name),ship_type = values(ship_type),ship_dimensions = values(ship_dimensions),
+            epfd_type = values(epfd_type),raim_flag = values(raim_flag),dte = values(dte),
+            vdm19_time = values(vdm19_time),position_update_time = values(position_update_time),static_update_time = values(static_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm24AList">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            name = values(name),
+            vdm24_time = values(vdm24_time),static_update_time = values(static_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm24BList">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            ship_type = values(ship_type),call_sign = values(call_sign),ship_dimensions = values(ship_dimensions),
+            vdm24_time = values(vdm24_time),static_update_time = values(static_update_time),update_time = values(update_time)
+    </insert>
+    <insert id="upsertVdm27List">
+        insert into t_ship_vdm (<include refid="BaseField"></include>)
+        values
+        <foreach collection="list" item="po" separator=",">
+            (
+            #{po.shipId}, #{po.mmsiNumber},#{po.messageId}, #{po.navigationalStatus}, #{po.steeringSpeed},
+            #{po.sog}, #{po.positionAccuracy}, #{po.longitude}, #{po.latitude}, #{po.cog}, #{po.trueHeading},
+            #{po.utcTimeStamp}, #{po.specificManoeuvreIndicator}, #{po.raimFlag},
+            #{po.communicationStatus}, #{po.statusOfCurrentGnssPosition},
+            #{po.aisVersionIndicator}, #{po.imoNumber}, #{po.callSign}, #{po.name}, #{po.shipType},
+            #{po.shipDimensions}, #{po.epfdType}, #{po.eta}, #{po.maxStaticDraft}, #{po.destination},#{po.dte},
+            #{po.vdm1Time},#{po.vdm2Time},#{po.vdm3Time},#{po.vdm5Time},#{po.vdm18Time},#{po.vdm19Time},#{po.vdm24Time},#{po.vdm27Time},
+            #{po.positionUpdateTime},#{po.staticUpdateTime},#{po.updateTime}
+            )
+        </foreach>
+        on duplicate key update
+            message_id = values(message_id),
+            position_accuracy = values(position_accuracy),raim_flag = values(raim_flag),
+            navigational_status = values(navigational_status),longitude = values(longitude),latitude = values(latitude),
+            sog = values(sog),cog = values(cog),status_of_current_gnss_position = values(status_of_current_gnss_position),
+            vdm27_time = values(vdm27_time),position_update_time = values(position_update_time),update_time = values(update_time)
+    </insert>
+</mapper>

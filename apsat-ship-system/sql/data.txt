@@ -1,0 +1,152 @@
+{
+    "respDesc": "成功",
+    "data": [
+        {
+            "swsd": "13.7m",
+            "mmsiNumber": "414247000",
+            "navigationalstatus": "1014",
+            "groundSpeed": "116",
+            "latitude": "38.0000000",
+            "sensorDepth": "006.4m",
+            "destination": null,
+            "sindSpeed": "1492.45knots",
+            "steeringSpeed": null,
+            "type": "70",
+            "deviceName": null,
+            "rerativeWind": "214938.99°",
+            "reserve02": null,
+            "callSign": "BICH7@@",
+            "reserve01": null,
+            "totalCumulativeGroundDistance": "N",
+            "maximumStaticDraft": null,
+            "eta": "2020-10-25 04:00:00",
+            "shipHead": null,
+            "imoNumber": "MG6Z2006101530802C",
+            "name": "BICH7@@",
+            "cog": null,
+            "groundDistanceSinceReset": "N",
+            "longitude": "117.0000000"
+        },
+        {
+            "swsd": "13.7m",
+            "mmsiNumber": "414247000",
+            "navigationalstatus": "1014",
+            "groundSpeed": "116",
+            "latitude": "45.0000000",
+            "sensorDepth": "006.4m",
+            "destination": null,
+            "sindSpeed": "1492.45knots",
+            "steeringSpeed": null,
+            "type": "70",
+            "deviceName": null,
+            "rerativeWind": "214938.99°",
+            "reserve02": null,
+            "callSign": "BICH7@@",
+            "reserve01": null,
+            "totalCumulativeGroundDistance": "N",
+            "maximumStaticDraft": null,
+            "eta": "2020-10-19 14:02:38",
+            "shipHead": null,
+            "imoNumber": "MG6Z2006101530802C",
+            "name": "BICH7@@",
+            "cog": null,
+            "groundDistanceSinceReset": "N",
+            "longitude": "117.0000000"
+        }
+    ],
+    "respCode": "0000"
+}
+
+
+
+{
+    "respDesc": "成功",
+    "data": [
+        {
+            "meloot": null,
+            "afp3": null,
+            "aft3": null,
+            "sae3": null,
+            "afp2": null,
+            "mefof": null,
+            "afp1": "0.6223176Mpa",
+            "fip": "0.7599146Mpa",
+            "gfif": null,
+            "deviceName": null,
+            "aft2": null,
+            "sae2": null,
+            "aft1": "114.2207183Deg",
+            "sae1": "757.3190307RPM",
+            "fit": "114.0776367Deg",
+            "trim": "0.93°",
+            "sloot": "42.09449Deg",
+            "bfoif": "0M3/h",
+            "boilerSteamPressure": "0.3083066Mpa",
+            "boilerWaterLevel": null,
+            "revolutionSpeed": "0RPM",
+            "sefof": null,
+            "siet": "40.812889Deg",
+            "controlAirPressure": "0.0026666Mpa",
+            "siep": null,
+            "name": "BICH7@@",
+            "ats1": "3,822.2939453RPMX10",
+            "hostLoad": "0.1924104%",
+            "runstatus1": null,
+            "runstatus2": null,
+            "ats3": null,
+            "runstatus3": null,
+            "soet": null,
+            "ats2": null,
+            "meloip": "0.3203426Mpa",
+            "meloit": "45.0145225Deg",
+            "bot": null,
+            "gfof": null,
+            "starboardDraft": "8.5799999m",
+            "sternDraught": "10.7899999m",
+            "mejit": "70.8457336Deg",
+            "superchargerSpeed": "13.3618383PRMX",
+            "heel": "-0.46°",
+            "mefit": "114.0776367Deg",
+            "mejip": "0.1767914Mpa",
+            "bfoof": "0M3/h",
+            "smp": "0.0021436Mpa",
+            "stemDraft": "6.96m",
+            "sloip": "0.2539241Mpa",
+            "pcoip": "0.2752136Mpa",
+            "smt": "41.6114044Deg",
+            "startingAirPressure": "2.4823906Mpa",
+            "pog1": "453KW",
+            "pog2": null,
+            "runningHours": null,
+            "pog3": null,
+            "portDraft": "8.7399997m",
+            "mefc": "0%",
+            "alot1": "59.6556663Deg",
+            "alot3": null,
+            "alot2": null,
+            "alop1": "0.5090811Mpa",
+            "alop3": null,
+            "alop2": null,
+            "cloit": "43.78059Deg",
+            "sefif": null,
+            "tbbt": "46.1243286Deg",
+            "imoNumber": "MG6Z2006101530802C",
+            "meav": "0MM"
+        }
+    ],
+    "respCode": "0000"
+}
+
+船舶总燃油消耗
+主机燃油消耗
+发电燃油机燃油消耗(辅机)
+锅炉燃油消耗
+船速
+百公里燃油能耗
+主机燃油能耗
+辅机燃油能耗
+主机负荷
+主机燃油指数
+船舶总燃油能耗态势
+锅炉燃油能耗
+

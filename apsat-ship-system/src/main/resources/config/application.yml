@@ -1,0 +1,144 @@
+server:
+  port: 9009
+  # 下面是配置undertow作为服务器的参数
+  undertow:
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    undertow:
+      io-threads: 16
+      # 阻塞任务线程池, 当执行类似servlet请求阻塞IO操作, undertow会从这个线程池中取得线程
+      # 它的值设置取决于系统线程执行任务的阻塞系数，默认值是IO线程数*8
+      worker-threads: 256
+      # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+      # 每块buffer的空间大小,越小的空间被利用越充分，不要设置太大，以免影响其他应用，合适即可
+      buffer-size: 1024
+      # 每个区分配的buffer数量 , 所以pool的大小是buffer-size * buffers-per-region
+      buffers-per-region: 1024
+      # 是否分配的直接内存(NIO直接分配的堆外内存)
+      direct-buffers: true
+
+spring:
+  profiles:
+    active: test
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  #配置 Jpa
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: true
+
+#七牛云
+qiniu:
+  # 文件大小 /M
+  max-size: 15
+
+#邮箱验证码有效时间/分钟
+code:
+  expiration: 5
+
+#登录图形验证码有效时间/分钟
+loginCode:
+  expiration: 2
+
+
+singlematch:
+  # 对象存储配置
+  storage:
+    # 当前工作的对象存储模式，分别是local、aliyun、tencent、qiniu
+    active: qiniu
+    # 阿里云对象存储配置信息
+    aliyun:
+      endpoint: oss-cn-shenzhen.aliyuncs.com
+      accessKeyId: xxxxxx
+      accessKeySecret: xxxxxx
+      bucketName: xxxxxx
+        # 腾讯对象存储配置信息
+        # 请参考 https://cloud.tencent.com/document/product/436/6249
+    tencent:
+      secretId: 111111
+      secretKey: xxxxxx
+      region: xxxxxx
+      bucketName: xxxxxx
+    # 七牛云对象存储配置信息
+    qiniu:
+      #endPoint: r60xdrfxo.hn-bkt.clouddn.com
+      endPoint: qiniu.finezs.top
+      accessKey: xh8O4ktlSnLUHJO0Bd7Mbt-dhSHdRQb6zSlkzSqY
+      secretKey: mv0B217Elw0Cj1MjNJTfXztZFoy55YEMK-ZVyZn3
+      bucketName: apsat-demo6
+    # fastDFS 配置信息
+    fastdfs:
+      connect-timeout: 30
+      network-timeout: 60
+      charset: utf-8
+      #tracker-servers: mw9.zhixueyun.com:10401
+      #tracker-http-port: 10401
+      tracker-servers: xxxxxx
+      tracker-http-port: 22122
+      anti-steal-token: false
+      secret-key: xxxxxx
+      max-total: 200
+      max-total-key: 40
+      max-idle: 20
+      min-idle: 20
+      max-wait-millis: 6000
+      pool-size: 20
+
+logging:
+  level:
+    root: info
+    path: logs
+  pattern:
+    file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+    console: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+
+# 登录\修改密码传参加密 key
+ase:
+  key: 8Bo4MU6i21DEMfYZ
+
+# 若使用 fastdfs,需要指定文件访问地址,即 fastdfs文件目录 代理地址
+front:
+  upload:
+    url: http://
+
+data:
+    sync:
+      transId: 20200726120853075890901
+      token: 7c4fa357d8b1415afe6ec12f34658b52
+      appId: zhhy
+      ship-navigation-url: https://xcx.apsatcom.com/OSN/api/prod/qry/navigation/v1
+      ship-device-url: https://xcx.apsatcom.com/OSN/api/prod/qry/device/v1
+
+# 用户默认密码Apsat123456.为 MD5 加密之后字符串
+apsat:
+  init-password: c15c45671c62a0e586009341b6ea64eb
+
+#mybatis的相关配置
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.zkthinke.modules.apsat.ship.domain
+  #开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+# 配置pagehelper参数
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#短信服务
+sms:
+  active: aliyun
+  aliyun:
+    accessKeyId: LTAIfL9FHJFe6YyH
+    accessKeySecret: Vw5HWgbf7B6s9vCqEaxdnnaTTKNrZw
+    endPoint: dysmsapi.aliyuncs.com
+    signName: 亚太星通提醒您  #APSATCOM

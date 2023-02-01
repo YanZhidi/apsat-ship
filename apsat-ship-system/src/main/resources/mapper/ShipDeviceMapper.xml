@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipDeviceMapper">
+  <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.ShipDevicePO">
+    <!--@mbg.generated-->
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="ship_id" jdbcType="BIGINT" property="shipId" />
+      <result column="revolution_speed" jdbcType="VARCHAR" property="revolutionSpeed" />
+      <result column="host_load" jdbcType="VARCHAR" property="hostLoad" />
+      <result column="running_hours" jdbcType="VARCHAR" property="runningHours" />
+      <result column="supercharger_speed" jdbcType="VARCHAR" property="superchargerSpeed" />
+      <result column="starting_air_pressure" jdbcType="VARCHAR" property="startingAirPressure" />
+      <result column="tbbt" jdbcType="VARCHAR" property="tbbt" />
+      <result column="meav" jdbcType="VARCHAR" property="meav" />
+      <result column="meloip" jdbcType="VARCHAR" property="meloip" />
+      <result column="mefc" jdbcType="VARCHAR" property="mefc" />
+      <result column="meloot" jdbcType="VARCHAR" property="meloot" />
+      <result column="meloit" jdbcType="VARCHAR" property="meloit" />
+      <result column="sloip" jdbcType="VARCHAR" property="sloip" />
+      <result column="fip" jdbcType="VARCHAR" property="fip" />
+      <result column="fit" jdbcType="VARCHAR" property="fit" />
+      <result column="pcoip" jdbcType="VARCHAR" property="pcoip" />
+      <result column="cloit" jdbcType="VARCHAR" property="cloit" />
+      <result column="mejip" jdbcType="VARCHAR" property="mejip" />
+      <result column="mejit" jdbcType="VARCHAR" property="mejit" />
+      <result column="siep" jdbcType="VARCHAR" property="siep" />
+      <result column="siet" jdbcType="VARCHAR" property="siet" />
+      <result column="soet" jdbcType="VARCHAR" property="soet" />
+      <result column="control_air_pressure" jdbcType="VARCHAR" property="controlAirPressure" />
+      <result column="smp" jdbcType="VARCHAR" property="smp" />
+      <result column="smt" jdbcType="VARCHAR" property="smt" />
+      <result column="runstatus1" jdbcType="VARCHAR" property="runstatus1" />
+      <result column="sae1" jdbcType="VARCHAR" property="sae1" />
+      <result column="pog1" jdbcType="VARCHAR" property="pog1" />
+      <result column="ats1" jdbcType="VARCHAR" property="ats1" />
+      <result column="alop1" jdbcType="VARCHAR" property="alop1" />
+      <result column="alot1" jdbcType="VARCHAR" property="alot1" />
+      <result column="afp1" jdbcType="VARCHAR" property="afp1" />
+      <result column="aft1" jdbcType="VARCHAR" property="aft1" />
+      <result column="runstatus2" jdbcType="VARCHAR" property="runstatus2" />
+      <result column="sae2" jdbcType="VARCHAR" property="sae2" />
+      <result column="pog2" jdbcType="VARCHAR" property="pog2" />
+      <result column="ats2" jdbcType="VARCHAR" property="ats2" />
+      <result column="alop2" jdbcType="VARCHAR" property="alop2" />
+      <result column="alot2" jdbcType="VARCHAR" property="alot2" />
+      <result column="afp2" jdbcType="VARCHAR" property="afp2" />
+      <result column="aft2" jdbcType="VARCHAR" property="aft2" />
+      <result column="runstatus3" jdbcType="VARCHAR" property="runstatus3" />
+      <result column="sae3" jdbcType="VARCHAR" property="sae3" />
+      <result column="pog3" jdbcType="VARCHAR" property="pog3" />
+      <result column="ats3" jdbcType="VARCHAR" property="ats3" />
+      <result column="alop3" jdbcType="VARCHAR" property="alop3" />
+      <result column="alot3" jdbcType="VARCHAR" property="alot3" />
+      <result column="afp3" jdbcType="VARCHAR" property="afp3" />
+      <result column="aft3" jdbcType="VARCHAR" property="aft3" />
+      <result column="boiler_steam_pressure" jdbcType="VARCHAR" property="boilerSteamPressure" />
+      <result column="boiler_water_level" jdbcType="VARCHAR" property="boilerWaterLevel" />
+      <result column="bot" jdbcType="VARCHAR" property="bot" />
+      <result column="stern_draught" jdbcType="VARCHAR" property="sternDraught" />
+      <result column="stem_draft" jdbcType="VARCHAR" property="stemDraft" />
+      <result column="starboard_draft" jdbcType="VARCHAR" property="starboardDraft" />
+      <result column="port_draft" jdbcType="VARCHAR" property="portDraft" />
+      <result column="trim" jdbcType="VARCHAR" property="trim" />
+      <result column="heel" jdbcType="VARCHAR" property="heel" />
+      <result column="mefit" jdbcType="VARCHAR" property="mefit" />
+      <result column="mefif" jdbcType="VARCHAR" property="mefif" />
+      <result column="mefof" jdbcType="VARCHAR" property="mefof" />
+      <result column="gfif" jdbcType="VARCHAR" property="gfif" />
+      <result column="gfof" jdbcType="VARCHAR" property="gfof" />
+      <result column="bfoif" jdbcType="VARCHAR" property="bfoif" />
+      <result column="bfoof" jdbcType="VARCHAR" property="bfoof" />
+      <result column="sefif" jdbcType="VARCHAR" property="sefif" />
+      <result column="sefof" jdbcType="VARCHAR" property="sefof" />
+      <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+      <result column="source_id" jdbcType="BIGINT" property="sourceId" />
+      <result column="create_time" jdbcType="BIGINT" property="createTime" />
+      <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+      <result column="collect_time" jdbcType="BIGINT" property="collectTime" />
+      <result column="shaft_bearing_temp_fore" jdbcType="VARCHAR" property="shaftBearingTempFore" />
+      <result column="shaft_bearing_temp_aft" jdbcType="VARCHAR" property="shaftBearingTempAft" />
+      <result column="shaft_bearing_temp_inter" jdbcType="VARCHAR" property="shaftBearingTempInter" />
+      <result column="cool_sea_w_press" jdbcType="VARCHAR" property="coolSeaWPress" />
+      <result column="thrust_bearing_temp" jdbcType="VARCHAR" property="thrustBearingTemp" />
+      <result column="oil_bunker_temp_l" jdbcType="VARCHAR" property="oilBunkerTempL" />
+      <result column="oil_bunker_temp_r" jdbcType="VARCHAR" property="oilBunkerTempR" />
+      <result column="oil_bunker_lev_l" jdbcType="VARCHAR" property="oilBunkerLevL" />
+      <result column="oil_bunker_lev_r" jdbcType="VARCHAR" property="oilBunkerLevR" />
+      <result column="diesel_fuel_tank_lev" jdbcType="VARCHAR" property="dieselFuelTankLev" />
+      <result column="generator_running_1" jdbcType="VARCHAR" property="generatorRunning1" />
+      <result column="generator_running_2" jdbcType="VARCHAR" property="generatorRunning2" />
+      <result column="generator_running_3" jdbcType="VARCHAR" property="generatorRunning3" />
+      <result column="imo_number" jdbcType="VARCHAR" property="imoNumber" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="data_sync_time" jdbcType="TIMESTAMP" property="dataSyncTime" />
+      <result column="fcontrolAirPressure" jdbcType="VARCHAR" property="fcontrolairpressure" />
+      <result column="fstartingAirPressure" jdbcType="VARCHAR" property="fstartingairpressure" />
+      <result column="air_main_fold_press" jdbcType="VARCHAR" property="airMainFoldPress" />
+      <result column="air_receiver_temp" jdbcType="VARCHAR" property="airReceiverTemp" />
+      <result column="gas_outlet_temp_1" jdbcType="VARCHAR" property="gasOutletTemp1" />
+      <result column="fcontrol_air_pressure_2" jdbcType="VARCHAR" property="fcontrolAirPressure2" />
+      <result column="fcontrol_air_pressure_3" jdbcType="VARCHAR" property="fcontrolAirPressure3" />
+      <result column="fstarting_air_pressure_2" jdbcType="VARCHAR" property="fstartingAirPressure2" />
+      <result column="fstarting_air_pressure_3" jdbcType="VARCHAR" property="fstartingAirPressure3" />
+      <result column="gas_outlet_temp_2" jdbcType="VARCHAR" property="gasOutletTemp2" />
+      <result column="gas_outlet_temp_3" jdbcType="VARCHAR" property="gasOutletTemp3" />
+      <result column="fcontrol_air_pressure_1" jdbcType="VARCHAR" property="fcontrolAirPressure1" />
+      <result column="fstarting_air_pressure_1" jdbcType="VARCHAR" property="fstartingAirPressure1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ship_id, revolution_speed, host_load, running_hours, supercharger_speed, starting_air_pressure,
+    tbbt, meav, meloip, mefc, meloot, meloit, sloip, sloot, fip, fit, pcoip, cloit, mejip,
+    mejit, siep, siet, soet, control_air_pressure, smp, smt, runstatus1, sae1, pog1,
+    ats1, alop1, alot1, afp1, aft1, runstatus2, sae2, pog2, ats2, alop2, alot2, afp2,
+    aft2, runstatus3, sae3, pog3, ats3, alop3, alot3, afp3, aft3, boiler_steam_pressure,
+    boiler_water_level, bot, stern_draught, stem_draft, starboard_draft, port_draft,
+    `trim`, heel, mefit, mefif, mefof, gfif, gfof, bfoif, bfoof, sefif, sefof, device_name,
+    source_id, create_time, update_time, collect_time, shaft_bearing_temp_fore, shaft_bearing_temp_aft,
+    shaft_bearing_temp_inter, cool_sea_w_press, thrust_bearing_temp, oil_bunker_temp_l,
+    oil_bunker_temp_r, oil_bunker_lev_l, oil_bunker_lev_r, diesel_fuel_tank_lev, generator_running_1,
+    generator_running_2, generator_running_3, imo_number, `name`, data_sync_time, fcontrolAirPressure,
+    fstartingAirPressure, air_main_fold_press, air_receiver_temp, gas_outlet_temp_1,
+    fcontrol_air_pressure_2, fcontrol_air_pressure_3, fstarting_air_pressure_2, fstarting_air_pressure_3,
+    gas_outlet_temp_2, gas_outlet_temp_3, fcontrol_air_pressure_1, fstarting_air_pressure_1
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipDevicePO" useGeneratedKeys="true">
+      insert into t_ship_device (ship_id, revolution_speed, host_load,
+                                 running_hours, supercharger_speed, starting_air_pressure,
+                                 tbbt, meav, meloip,
+                                 mefc, meloot, meloit,
+                                 sloip, sloot, fip,
+                                 fit, pcoip, cloit,
+                                 mejip, mejit, siep,
+                                 siet, soet, control_air_pressure,
+                                 smp, smt, runstatus1,
+                                 sae1, pog1, ats1, alop1,
+                                 alot1, afp1, aft1,
+                                 runstatus2, sae2, pog2,
+                                 ats2, alop2, alot2,
+                                 afp2, aft2, runstatus3,
+                                 sae3, pog3, ats3, alop3,
+                                 alot3, afp3, aft3,
+                                 boiler_steam_pressure, boiler_water_level,
+                                 bot, stern_draught, stem_draft,
+                                 starboard_draft, port_draft, `trim`,
+                                 heel, mefit, mefif,
+                                 mefof, gfif, gfof,
+                                 bfoif, bfoof, sefif,
+                                 sefof, device_name, source_id,
+                                 create_time, update_time, collect_time,
+                                 shaft_bearing_temp_fore, shaft_bearing_temp_aft,
+                                 shaft_bearing_temp_inter, cool_sea_w_press, thrust_bearing_temp,
+                                 oil_bunker_temp_l, oil_bunker_temp_r, oil_bunker_lev_l,
+                                 oil_bunker_lev_r, diesel_fuel_tank_lev, generator_running_1,
+                                 generator_running_2, generator_running_3, imo_number,
+                                 `name`, data_sync_time, fcontrolAirPressure,
+                                 fstartingAirPressure, air_main_fold_press,
+                                 air_receiver_temp,gas_outlet_temp_1, fcontrol_air_pressure_2,
+                                 fcontrol_air_pressure_3, fstarting_air_pressure_2,
+                                 fstarting_air_pressure_3, gas_outlet_temp_2,
+                                 gas_outlet_temp_3, fcontrol_air_pressure_1, fstarting_air_pressure_1,one_gwdit,one_gwdot,one_dwdit,
+                                 one_gwdip,one_dwdip,one_one_opot,one_two_opot,one_three_opot,one_four_opot,
+                                 two_four_tpot,two_three_tpot,two_two_tpot,two_one_tpot,two_gwdip,two_dwdip,
+                                 three_four_tpot,three_three_tpot,three_two_tpot,three_one_tpot,three_gwdip,three_dwdip,
+                                 one_zpt,two_zpt,three_zpt,four_zpt,five_zpt,six_zpt,
+                                 one_qot,two_qot,three_qot,four_qot,five_qot,six_qot,zjlq_st,zjlh_st,zjlqs_jit,zjlqs_jot,zjp_aip,zjlq_jip,
+                                 one_qhlot,two_qhlot,three_qhlot,four_qhlot,five_qhlot,six_qhlot,
+                                 one_rct,one_rrt,two_rct,two_rrt,one_rcl,one_rrl,two_rcl,two_rrl)
+      values (#{shipId,jdbcType=BIGINT}, #{revolutionSpeed,jdbcType=VARCHAR}, #{hostLoad,jdbcType=VARCHAR},
+              #{runningHours,jdbcType=VARCHAR}, #{superchargerSpeed,jdbcType=VARCHAR}, #{startingAirPressure,jdbcType=VARCHAR},
+              #{tbbt,jdbcType=VARCHAR}, #{meav,jdbcType=VARCHAR}, #{meloip,jdbcType=VARCHAR},
+              #{mefc,jdbcType=VARCHAR}, #{meloot,jdbcType=VARCHAR}, #{meloit,jdbcType=VARCHAR},
+              #{sloip,jdbcType=VARCHAR}, #{sloot,jdbcType=VARCHAR}, #{fip,jdbcType=VARCHAR},
+              #{fit,jdbcType=VARCHAR}, #{pcoip,jdbcType=VARCHAR}, #{cloit,jdbcType=VARCHAR},
+              #{mejip,jdbcType=VARCHAR}, #{mejit,jdbcType=VARCHAR}, #{siep,jdbcType=VARCHAR},
+              #{siet,jdbcType=VARCHAR}, #{soet,jdbcType=VARCHAR}, #{controlAirPressure,jdbcType=VARCHAR},
+              #{smp,jdbcType=VARCHAR}, #{smt,jdbcType=VARCHAR}, #{runstatus1,jdbcType=VARCHAR},
+              #{sae1,jdbcType=VARCHAR}, #{pog1,jdbcType=VARCHAR}, #{ats1,jdbcType=VARCHAR}, #{alop1,jdbcType=VARCHAR},
+              #{alot1,jdbcType=VARCHAR}, #{afp1,jdbcType=VARCHAR}, #{aft1,jdbcType=VARCHAR},
+              #{runstatus2,jdbcType=VARCHAR}, #{sae2,jdbcType=VARCHAR}, #{pog2,jdbcType=VARCHAR},
+              #{ats2,jdbcType=VARCHAR}, #{alop2,jdbcType=VARCHAR}, #{alot2,jdbcType=VARCHAR},
+              #{afp2,jdbcType=VARCHAR}, #{aft2,jdbcType=VARCHAR}, #{runstatus3,jdbcType=VARCHAR},
+              #{sae3,jdbcType=VARCHAR}, #{pog3,jdbcType=VARCHAR}, #{ats3,jdbcType=VARCHAR}, #{alop3,jdbcType=VARCHAR},
+              #{alot3,jdbcType=VARCHAR}, #{afp3,jdbcType=VARCHAR}, #{aft3,jdbcType=VARCHAR},
+              #{boilerSteamPressure,jdbcType=VARCHAR}, #{boilerWaterLevel,jdbcType=VARCHAR},
+              #{bot,jdbcType=VARCHAR}, #{sternDraught,jdbcType=VARCHAR}, #{stemDraft,jdbcType=VARCHAR},
+              #{starboardDraft,jdbcType=VARCHAR}, #{portDraft,jdbcType=VARCHAR}, #{trim,jdbcType=VARCHAR},
+              #{heel,jdbcType=VARCHAR}, #{mefit,jdbcType=VARCHAR}, #{mefif,jdbcType=VARCHAR},
+              #{mefof,jdbcType=VARCHAR}, #{gfif,jdbcType=VARCHAR}, #{gfof,jdbcType=VARCHAR},
+              #{bfoif,jdbcType=VARCHAR}, #{bfoof,jdbcType=VARCHAR}, #{sefif,jdbcType=VARCHAR},
+              #{sefof,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, #{sourceId,jdbcType=BIGINT},
+              #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{collectTime,jdbcType=BIGINT},
+              #{shaftBearingTempFore,jdbcType=VARCHAR}, #{shaftBearingTempAft,jdbcType=VARCHAR},
+              #{shaftBearingTempInter,jdbcType=VARCHAR}, #{coolSeaWPress,jdbcType=VARCHAR}, #{thrustBearingTemp,jdbcType=VARCHAR},
+              #{oilBunkerTempL,jdbcType=VARCHAR}, #{oilBunkerTempR,jdbcType=VARCHAR}, #{oilBunkerLevL,jdbcType=VARCHAR},
+              #{oilBunkerLevR,jdbcType=VARCHAR}, #{dieselFuelTankLev,jdbcType=VARCHAR}, #{generatorRunning1,jdbcType=VARCHAR},
+              #{generatorRunning2,jdbcType=VARCHAR}, #{generatorRunning3,jdbcType=VARCHAR}, #{imoNumber,jdbcType=VARCHAR},
+              #{name,jdbcType=VARCHAR}, #{dataSyncTime,jdbcType=TIMESTAMP}, #{fcontrolairpressure,jdbcType=VARCHAR},
+              #{fstartingairpressure,jdbcType=VARCHAR}, #{airMainFoldPress,jdbcType=VARCHAR},
+              #{airReceiverTemp,jdbcType=VARCHAR},#{gasOutletTemp1,jdbcType=VARCHAR},#{fcontrolAirPressure2,jdbcType=VARCHAR},
+              #{fcontrolAirPressure3,jdbcType=VARCHAR}, #{fstartingAirPressure2,jdbcType=VARCHAR},
+              #{fstartingAirPressure3,jdbcType=VARCHAR}, #{gasOutletTemp2,jdbcType=VARCHAR},
+              #{gasOutletTemp3,jdbcType=VARCHAR}, #{fcontrolAirPressure1,jdbcType=VARCHAR}, #{fstartingAirPressure1,jdbcType=VARCHAR},
+              #{oneGwdit,jdbcType=VARCHAR},#{oneGwdot,jdbcType=VARCHAR},#{oneDwdit,jdbcType=VARCHAR},
+              #{oneGwdip,jdbcType=VARCHAR},#{oneDwdip,jdbcType=VARCHAR},#{oneoneOpot,jdbcType=VARCHAR},
+              #{onetwoOpot,jdbcType=VARCHAR},#{onethreeOpot,jdbcType=VARCHAR},#{onefourOpot,jdbcType=VARCHAR},
+              #{twofourTpot,jdbcType=VARCHAR},#{twothreeTpot,jdbcType=VARCHAR},#{twotwoTpot,jdbcType=VARCHAR},
+              #{twooneTpot,jdbcType=VARCHAR},#{twoGwdip,jdbcType=VARCHAR},#{twoDwdip,jdbcType=VARCHAR},
+              #{threefourTpot,jdbcType=VARCHAR},#{threethreeTpot,jdbcType=VARCHAR},#{threetwoTpot,jdbcType=VARCHAR},
+              #{threeoneTpot,jdbcType=VARCHAR},#{threeGwdip,jdbcType=VARCHAR},#{threeDwdip,jdbcType=VARCHAR},
+              #{oneZpt,jdbcType=VARCHAR},#{twoZpt,jdbcType=VARCHAR},#{threeZpt,jdbcType=VARCHAR},
+              #{fourZpt,jdbcType=VARCHAR},#{fiveZpt,jdbcType=VARCHAR},#{sixZpt,jdbcType=VARCHAR},
+              #{oneQot,jdbcType=VARCHAR},#{twoQot,jdbcType=VARCHAR},#{threeQot,jdbcType=VARCHAR},
+              #{fourQot,jdbcType=VARCHAR},#{fiveQot,jdbcType=VARCHAR},#{sixQot,jdbcType=VARCHAR},
+
+              #{zjlqSt,jdbcType=VARCHAR},#{zjlhSt,jdbcType=VARCHAR},#{zjlqsJit,jdbcType=VARCHAR},
+              #{zjlqsJot,jdbcType=VARCHAR},#{zjpAip,jdbcType=VARCHAR},#{zjlqJip,jdbcType=VARCHAR},
+              #{oneQhlot,jdbcType=VARCHAR},#{twoQhlot,jdbcType=VARCHAR},#{threeQhlot,jdbcType=VARCHAR},
+              #{fourQhlot,jdbcType=VARCHAR},#{fiveQhlot,jdbcType=VARCHAR},#{sixQhlot,jdbcType=VARCHAR},
+
+              #{oneRct,jdbcType=VARCHAR},#{oneRrt,jdbcType=VARCHAR},#{twoRct,jdbcType=VARCHAR},
+              #{twoRrt,jdbcType=VARCHAR},#{oneRcl,jdbcType=VARCHAR},#{oneRrl,jdbcType=VARCHAR},
+              #{twoRcl,jdbcType=VARCHAR},#{twoRrl,jdbcType=VARCHAR}
+
+
+
+              )
+  </insert>
+ <update id="updateByPrimaryKey" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipDevicePO">
+    <!--@mbg.generated-->
+     update t_ship_device
+     set ship_id = #{shipId,jdbcType=BIGINT},
+     revolution_speed = #{revolutionSpeed,jdbcType=VARCHAR},
+     host_load = #{hostLoad,jdbcType=VARCHAR},
+     running_hours = #{runningHours,jdbcType=VARCHAR},
+     supercharger_speed = #{superchargerSpeed,jdbcType=VARCHAR},
+     starting_air_pressure = #{startingAirPressure,jdbcType=VARCHAR},
+     tbbt = #{tbbt,jdbcType=VARCHAR},
+     meav = #{meav,jdbcType=VARCHAR},
+     meloip = #{meloip,jdbcType=VARCHAR},
+     mefc = #{mefc,jdbcType=VARCHAR},
+     meloot = #{meloot,jdbcType=VARCHAR},
+     meloit = #{meloit,jdbcType=VARCHAR},
+     sloip = #{sloip,jdbcType=VARCHAR},
+     sloot = #{sloot,jdbcType=VARCHAR},
+     fip = #{fip,jdbcType=VARCHAR},
+     fit = #{fit,jdbcType=VARCHAR},
+     pcoip = #{pcoip,jdbcType=VARCHAR},
+     cloit = #{cloit,jdbcType=VARCHAR},
+     mejip = #{mejip,jdbcType=VARCHAR},
+     mejit = #{mejit,jdbcType=VARCHAR},
+     siep = #{siep,jdbcType=VARCHAR},
+     siet = #{siet,jdbcType=VARCHAR},
+     soet = #{soet,jdbcType=VARCHAR},
+     control_air_pressure = #{controlAirPressure,jdbcType=VARCHAR},
+     smp = #{smp,jdbcType=VARCHAR},
+     smt = #{smt,jdbcType=VARCHAR},
+     runstatus1 = #{runstatus1,jdbcType=VARCHAR},
+     sae1 = #{sae1,jdbcType=VARCHAR},
+     pog1 = #{pog1,jdbcType=VARCHAR},
+     ats1 = #{ats1,jdbcType=VARCHAR},
+     alop1 = #{alop1,jdbcType=VARCHAR},
+     alot1 = #{alot1,jdbcType=VARCHAR},
+     afp1 = #{afp1,jdbcType=VARCHAR},
+     aft1 = #{aft1,jdbcType=VARCHAR},
+     runstatus2 = #{runstatus2,jdbcType=VARCHAR},
+     sae2 = #{sae2,jdbcType=VARCHAR},
+     pog2 = #{pog2,jdbcType=VARCHAR},
+     ats2 = #{ats2,jdbcType=VARCHAR},
+     alop2 = #{alop2,jdbcType=VARCHAR},
+     alot2 = #{alot2,jdbcType=VARCHAR},
+     afp2 = #{afp2,jdbcType=VARCHAR},
+     aft2 = #{aft2,jdbcType=VARCHAR},
+     runstatus3 = #{runstatus3,jdbcType=VARCHAR},
+     sae3 = #{sae3,jdbcType=VARCHAR},
+     pog3 = #{pog3,jdbcType=VARCHAR},
+     ats3 = #{ats3,jdbcType=VARCHAR},
+     alop3 = #{alop3,jdbcType=VARCHAR},
+     alot3 = #{alot3,jdbcType=VARCHAR},
+     afp3 = #{afp3,jdbcType=VARCHAR},
+     aft3 = #{aft3,jdbcType=VARCHAR},
+     boiler_steam_pressure = #{boilerSteamPressure,jdbcType=VARCHAR},
+     boiler_water_level = #{boilerWaterLevel,jdbcType=VARCHAR},
+     bot = #{bot,jdbcType=VARCHAR},
+     stern_draught = #{sternDraught,jdbcType=VARCHAR},
+     stem_draft = #{stemDraft,jdbcType=VARCHAR},
+     starboard_draft = #{starboardDraft,jdbcType=VARCHAR},
+     port_draft = #{portDraft,jdbcType=VARCHAR},
+     `trim` = #{trim,jdbcType=VARCHAR},
+     heel = #{heel,jdbcType=VARCHAR},
+     mefit = #{mefit,jdbcType=VARCHAR},
+     mefif = #{mefif,jdbcType=VARCHAR},
+     mefof = #{mefof,jdbcType=VARCHAR},
+     gfif = #{gfif,jdbcType=VARCHAR},
+     gfof = #{gfof,jdbcType=VARCHAR},
+     bfoif = #{bfoif,jdbcType=VARCHAR},
+     bfoof = #{bfoof,jdbcType=VARCHAR},
+     sefif = #{sefif,jdbcType=VARCHAR},
+     sefof = #{sefof,jdbcType=VARCHAR},
+     device_name = #{deviceName,jdbcType=VARCHAR},
+     source_id = #{sourceId,jdbcType=BIGINT},
+     create_time = #{createTime,jdbcType=BIGINT},
+     update_time = #{updateTime,jdbcType=BIGINT},
+     collect_time = #{collectTime,jdbcType=BIGINT},
+     shaft_bearing_temp_fore = #{shaftBearingTempFore,jdbcType=VARCHAR},
+     shaft_bearing_temp_aft = #{shaftBearingTempAft,jdbcType=VARCHAR},
+     shaft_bearing_temp_inter = #{shaftBearingTempInter,jdbcType=VARCHAR},
+     cool_sea_w_press = #{coolSeaWPress,jdbcType=VARCHAR},
+     thrust_bearing_temp = #{thrustBearingTemp,jdbcType=VARCHAR},
+     oil_bunker_temp_l = #{oilBunkerTempL,jdbcType=VARCHAR},
+     oil_bunker_temp_r = #{oilBunkerTempR,jdbcType=VARCHAR},
+     oil_bunker_lev_l = #{oilBunkerLevL,jdbcType=VARCHAR},
+     oil_bunker_lev_r = #{oilBunkerLevR,jdbcType=VARCHAR},
+     diesel_fuel_tank_lev = #{dieselFuelTankLev,jdbcType=VARCHAR},
+     generator_running_1 = #{generatorRunning1,jdbcType=VARCHAR},
+     generator_running_2 = #{generatorRunning2,jdbcType=VARCHAR},
+     generator_running_3 = #{generatorRunning3,jdbcType=VARCHAR},
+     imo_number = #{imoNumber,jdbcType=VARCHAR},
+     `name` = #{name,jdbcType=VARCHAR},
+     data_sync_time = #{dataSyncTime,jdbcType=TIMESTAMP},
+     fcontrolAirPressure = #{fcontrolairpressure,jdbcType=VARCHAR},
+     fstartingAirPressure = #{fstartingairpressure,jdbcType=VARCHAR},
+     air_main_fold_press = #{airMainFoldPress,jdbcType=VARCHAR},
+     air_receiver_temp = #{airReceiverTemp,jdbcType=VARCHAR},
+     gas_outlet_temp_1 = #{gasOutletTemp1,jdbcType=VARCHAR},
+     fcontrol_air_pressure_2 = #{fcontrolAirPressure2,jdbcType=VARCHAR},
+     fcontrol_air_pressure_3 = #{fcontrolAirPressure3,jdbcType=VARCHAR},
+     fstarting_air_pressure_2 = #{fstartingAirPressure2,jdbcType=VARCHAR},
+     fstarting_air_pressure_3 = #{fstartingAirPressure3,jdbcType=VARCHAR},
+     gas_outlet_temp_2 = #{gasOutletTemp2,jdbcType=VARCHAR},
+     gas_outlet_temp_3 = #{gasOutletTemp3,jdbcType=VARCHAR},
+     fcontrol_air_pressure_1 = #{fcontrolAirPressure1,jdbcType=VARCHAR},
+     fstarting_air_pressure_1 = #{fstartingAirPressure1,jdbcType=VARCHAR},
+
+     one_gwdit = #{oneGwdit,jdbcType=VARCHAR},
+     one_gwdot = #{oneGwdot,jdbcType=VARCHAR},
+     one_dwdit = #{oneDwdit,jdbcType=VARCHAR},
+     one_gwdip = #{oneGwdip,jdbcType=VARCHAR},
+     one_dwdip = #{oneDwdip,jdbcType=VARCHAR},
+     one_one_opot = #{oneoneOpot,jdbcType=VARCHAR},
+     one_two_opot = #{onetwoOpot,jdbcType=VARCHAR},
+     one_three_opot = #{onethreeOpot,jdbcType=VARCHAR},
+     one_four_opot = #{onefourOpot,jdbcType=VARCHAR},
+     two_four_tpot = #{twofourTpot,jdbcType=VARCHAR},
+     two_three_tpot = #{twothreeTpot,jdbcType=VARCHAR},
+     two_two_tpot = #{twotwoTpot,jdbcType=VARCHAR},
+     two_one_tpot = #{twooneTpot,jdbcType=VARCHAR},
+     two_gwdip = #{twoGwdip,jdbcType=VARCHAR},
+     two_dwdip = #{twoDwdip,jdbcType=VARCHAR},
+     three_four_tpot = #{threefourTpot,jdbcType=VARCHAR},
+     three_three_tpot = #{threethreeTpot,jdbcType=VARCHAR},
+     three_two_tpot = #{threetwoTpot,jdbcType=VARCHAR},
+     three_one_tpot = #{threeoneTpot,jdbcType=VARCHAR},
+     three_gwdip = #{threeGwdip,jdbcType=VARCHAR},
+     three_dwdip = #{threeDwdip,jdbcType=VARCHAR},
+     one_zpt = #{oneZpt,jdbcType=VARCHAR},
+     two_zpt = #{twoZpt,jdbcType=VARCHAR},
+     three_zpt = #{threeZpt,jdbcType=VARCHAR},
+     four_zpt = #{fourZpt,jdbcType=VARCHAR},
+     five_zpt = #{fiveZpt,jdbcType=VARCHAR},
+     six_zpt = #{sixZpt,jdbcType=VARCHAR},
+     one_qot = #{oneQot,jdbcType=VARCHAR},
+     two_qot = #{twoQot,jdbcType=VARCHAR},
+     three_qot = #{threeQot,jdbcType=VARCHAR},
+     four_qot = #{fourQot,jdbcType=VARCHAR},
+     five_qot = #{fiveQot,jdbcType=VARCHAR},
+     six_qot = #{sixQot,jdbcType=VARCHAR},
+     zjlq_st = #{zjlqSt,jdbcType=VARCHAR},
+     zjlh_st = #{zjlhSt,jdbcType=VARCHAR},
+     zjlqs_jit = #{zjlqsJit,jdbcType=VARCHAR},
+     zjlqs_jot = #{zjlqsJot,jdbcType=VARCHAR},
+     zjp_aip = #{zjpAip,jdbcType=VARCHAR},
+     zjlq_jip = #{zjlqJip,jdbcType=VARCHAR},
+     one_qhlot = #{oneQhlot,jdbcType=VARCHAR},
+     two_qhlot = #{twoQhlot,jdbcType=VARCHAR},
+     three_qhlot = #{threeQhlot,jdbcType=VARCHAR},
+     four_qhlot = #{fourQhlot,jdbcType=VARCHAR},
+     five_qhlot = #{fiveQhlot,jdbcType=VARCHAR},
+     six_qhlot = #{sixQhlot,jdbcType=VARCHAR},
+     one_rct = #{oneRct,jdbcType=VARCHAR},
+     one_rrt = #{oneRrt,jdbcType=VARCHAR},
+     two_rct = #{twoRct,jdbcType=VARCHAR},
+     two_rrt = #{twoRrt,jdbcType=VARCHAR},
+     one_rcl = #{oneRcl,jdbcType=VARCHAR},
+     one_rrl = #{oneRrl,jdbcType=VARCHAR},
+     two_rcl = #{twoRcl,jdbcType=VARCHAR},
+     two_rrl = #{twoRrl,jdbcType=VARCHAR}
+
+     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getDeviceInfoByImoNumber" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDevicePO">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    t_ship_device
+    where
+    imo_number =#{imoNumber}
+    and
+    data_sync_time =#{dataSyncTime}
+    and
+    name =#{name}
+  </select>
+
+  <select id="getCount" resultType="java.lang.Integer">
+    select
+      count(*)
+    from
+      t_ship_device
+    where
+      imo_number =#{imoNumber}
+      and
+      data_sync_time=#{dataSyncTime}
+      and
+      name =#{name}
+  </select>
+    <select id="getFuelConmuseList" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDeviceModPO">
+        SELECT
+        d.id deviceId,
+        d.collect_time dataSyncTime,
+        IFNULL(AVG( m.zjjkll ) ,0) zjjkll,
+        IFNULL(AVG( m.zjckll ) ,0) zjckll,
+        IFNULL(AVG( m.fdjjkll ),0) fdjjkll,
+        IFNULL(AVG( m.fdjckll ),0) fdjckll,
+        IFNULL(AVG( m.glll ) ,0) glll,
+        IFNULL(AVG( m.glckll ) ,0) glckll
+        FROM
+        t_ship_device d
+        LEFT JOIN t_ship_device_mod m ON d.id = m.device_id
+        WHERE
+        <if test="shipId!=null">
+            m.ship_id = #{shipId}
+        </if>
+        <if test="begin!=null">
+            AND d.collect_time >= #{begin}
+        </if>
+        <if test="end">
+            AND d.collect_time &lt;= #{end}
+        </if>
+        GROUP BY
+        d.id
+    </select>
+    <select id="getRealTimeFuelConsumptionData" resultType="com.zkthinke.modules.apsat.ship.device.domain.DeviceRealTimeBO">
+        SELECT
+            ROUND(IFNULL(zjjkll,0)) AS zjjkll,
+            ROUND(IFNULL(zjjkmd,0)) AS zjjkmd,
+            ROUND(IFNULL(zjjkwd,0)) AS zjjkwd,
+            ROUND(IFNULL(zjckll,0)) AS zjckll,
+            ROUND(IFNULL(zjckmd,0)) AS zjckmd,
+            ROUND(IFNULL(zjckwd,0)) AS zjckwd,
+            ROUND(IFNULL(fdjjkll,0)) AS fdjjkll,
+            ROUND(IFNULL(fdjjkmd,0)) AS fdjjkmd,
+            ROUND(IFNULL(fdjjkwd,0)) AS fdjjkwd,
+            ROUND(IFNULL(fdjckll,0)) AS fdjckll,
+            ROUND(IFNULL(fdjckmd,0)) AS fdjckmd,
+            ROUND(IFNULL(fdjckwd,0)) AS fdjckwd,
+            ROUND(IFNULL(glll,0)) AS glll,
+            ROUND(IFNULL(glmd,0)) AS glmd,
+            ROUND(IFNULL(glwd,0)) AS glwd,
+            ROUND(IFNULL(glckll,0)) AS glckll,
+            ROUND(IFNULL(glckmd,0)) AS glckmd,
+            ROUND(IFNULL(glckwd,0)) AS glckwd
+        FROM
+            t_ship_device_mod
+        where
+            ship_id = #{shipId}
+        ORDER BY
+            data_sync_time DESC
+        LIMIT 1
+    </select>
+    <select id="realTimeEquipmentStatus" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDevicePO">
+        select *
+        from t_ship_device
+        <where>
+            <if test="shipId!=null">
+                AND ship_id = #{shipId}
+            </if>
+        </where>
+        order by collect_time desc
+        limit 1
+    </select>
+    <select id="getAll" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDevicePO">
+        select * from t_ship_device
+    </select>
+    <select id="findSmartCabinStatusList" resultType="com.zkthinke.modules.apsat.ship.device.domain.SmartCabinStatusPO">
+        SELECT
+        mefc,
+        revolution_speed,
+        cool_sea_w_press,
+        mejip,
+        mejit,
+        generator_running_1,
+        generator_running_2,
+        generator_running_3,
+        fip,
+        fit,
+        meloip,
+        meloit,
+        starting_air_pressure,
+        control_air_pressure,
+        air_main_fold_press,
+        sloot,
+        soet,
+        siet,
+        shaft_bearing_temp_inter,
+        thrust_bearing_temp,
+        shaft_bearing_temp_fore,
+        shaft_bearing_temp_aft,
+        gas_outlet_temp_1,
+        gas_outlet_temp_2,
+        gas_outlet_temp_3,
+        alop1,
+        alop2,
+        alop3,
+        alot1,
+        alot2,
+        alot3,
+        collect_time
+        FROM
+        t_ship_device
+        where
+            ship_id = #{shipId}
+            <if test="begin!=null">
+                AND collect_time >= #{begin}
+            </if>
+            <if test="end!=null">
+                AND collect_time &lt;= #{end}
+            </if>
+        ORDER BY
+        collect_time ASC
+    </select>
+    <select id="findRotationGroundSpeedList"
+            resultType="com.zkthinke.modules.apsat.ship.device.domain.RevolutionGroundSpeedBO">
+        SELECT
+        dt.ground_speed,
+        dv.revolution_speed,
+        dv.collect_time
+        FROM
+        t_ship_detail dt
+        LEFT JOIN t_ship_device dv ON dt.collect_time = dv.collect_time
+        <where>
+            <if test="shipId!=null">
+                AND dt.ship_id = #{shipId} AND dv.ship_id = #{shipId}
+            </if>
+            <if test="begin!=null">
+                AND dt.collect_time >= #{begin}
+            </if>
+            <if test="end!=null">
+                AND dt.collect_time &lt;= #{end}
+            </if>
+        </where>
+        ORDER BY
+        collect_time ASC
+    </select>
+    <select id="findAlotList" resultType="com.zkthinke.modules.apsat.ship.device.domain.AlopStatusPO">
+        SELECT
+        alop1,
+        alop2,
+        alop3,
+        generator_running_1,
+        generator_running_2,
+        generator_running_3,
+        collect_time
+        FROM
+        t_ship_device
+        <where>
+            alop1 is not null
+            and alop2 is not null
+            and alop3 is not null
+            <if test="shipId!=null">
+                AND ship_id = #{shipId}
+            </if>
+            <if test="begin!=null">
+                AND collect_time >= #{begin}
+            </if>
+            <if test="end!=null">
+                AND collect_time &lt;= #{end}
+            </if>
+        </where>
+        ORDER BY
+        collect_time ASC
+    </select>
+    <select id="findHostDetails" resultType="com.zkthinke.modules.apsat.ship.device.domain.HostDetailsBO">
+        SELECT
+            starting_air_pressure  as startingAirPressure,
+            control_air_pressure as   controlAirPressure,
+            air_main_fold_press as   airMainFoldPress,
+            smt    ,
+            mefc    ,
+            fit    ,
+            meloit    ,
+            mejit    ,
+            fip    ,
+            meloip    ,
+            mejip    ,
+            cool_sea_w_press as   coolSeaWPress,
+            siet    ,
+            soet    ,
+            sloot    ,
+            thrust_bearing_temp as   thrustBearingTemp,
+            shaft_bearing_temp_inter as   shaftBearingTempInter,
+            shaft_bearing_temp_fore as   shaftBearingTempFore,
+            shaft_bearing_temp_aft as   shaftBearingTempAft,
+            pst_power as pstPower,
+            revolution_speed as revolutionSpeed
+        FROM
+            t_ship_device a
+            LEFT JOIN t_ship_detail b ON a.collect_time = b.collect_time
+        WHERE a.ship_id = #{shipId} and  b.ship_id = #{shipId}
+        ORDER BY
+            a.collect_time DESC
+            LIMIT 1
+    </select>
+    <select id="findShipDeviceList" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDeviceBO">
+        select
+            *
+        from
+            t_ship_device
+        where
+            ship_id =#{shipId}
+            AND collect_time >= #{begin}
+            AND collect_time &lt;= #{end}
+        order by
+            collect_time
+    </select>
+
+</mapper>

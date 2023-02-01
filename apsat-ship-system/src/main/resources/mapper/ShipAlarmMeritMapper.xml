@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipAlarmMeritMapper">
+    <sql id="DefaultField">
+        merit,unit,low,high,state
+    </sql>
+    <sql id="MeritField">
+        ship_id,merit,unit,low,high,state,update_time,create_time,create_user
+    </sql>
+    <select id="queryShipAlarmMerit" resultType="com.zkthinke.modules.apsat.ship.domain.ShipAlarmMeritPO">
+        select
+            ship_id as shipId,
+            <include refid="DefaultField"/>,
+            update_time as updateTime,
+            create_time as createTime,
+            create_user as createUser
+        from t_ship_alarm_merit
+        where ship_id = #{shipId}
+    </select>
+    <select id="queryShipAlarmMeritDefault" resultType="com.zkthinke.modules.apsat.ship.domain.ShipAlarmMeritPO">
+        select <include refid="DefaultField"/>
+        from t_ship_alarm_merit_default
+    </select>
+    <insert id="batchInsertShipAlarmMerit">
+        insert into t_ship_alarm_merit (<include refid="MeritField"/>)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.shipId},#{item.merit},#{item.unit},#{item.low},#{item.high},#{item.state},#{item.updateTime},#{item.createTime},#{item.createUser})
+        </foreach>
+    </insert>
+    <update id="updateShipAlarmMerit">
+        update t_ship_alarm_merit
+        set unit = #{unit},low = #{low},high = #{high},state = #{state},update_time = #{updateTime}
+        where ship_id = #{shipId} and merit = #{merit}
+    </update>
+</mapper>

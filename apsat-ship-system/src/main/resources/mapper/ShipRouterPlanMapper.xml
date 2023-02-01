@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipRoutePlanDao">
+
+    <select id="findAll" resultType="ShipRoutePlan">
+        SELECT * FROM t_ship_route_plan where ship_id = #{shipId,jdbcType=BIGINT}
+        <if test="voyageNumber != null and voyageNumber != ''">
+            and voyage_number = #{voyageNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != ''">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <update id="updateStateById">
+        update t_ship_route_plan
+        set state = #{state,jdbcType=CHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="queryUrlById" resultType="java.lang.String">
+        SELECT url
+        FROM storage_content
+        where id = #{value}
+    </select>
+    <select id="queryShipNameById" resultType="java.lang.String">
+        SELECT `name`
+        FROM t_ship
+        where id = #{value}
+    </select>
+    <select id="queryShipVoyageNumberById" resultType="java.lang.String">
+        SELECT voyage_number
+        FROM t_ship_route_plan
+        where ship_id = #{value} and `state`=1
+    </select>
+    <select id="queryPhoneByRoleLevel" resultType="java.lang.String">
+        SELECT a.phone
+        FROM `user` a
+        LEFT JOIN users_roles b ON a.id = b.user_id
+        LEFT JOIN role c ON b.role_id = c.id
+        LEFT JOIN roles_ships d ON c.id = d.role_id
+        WHERE c.`level` = '3'
+        AND d.ship_id = #{shipId}
+    </select>
+
+    <insert id="addPlan" parameterType="ShipRoutePlan" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into t_ship_route_plan
+        (ship_id, voyage_number, voyage_name, plan_name, leg_begin, leg_end,electronic_radius,etd,eta, `state`, create_time, update_time, url,create_user)
+        values (#{shipId,jdbcType=BIGINT}, #{voyageNumber,jdbcType=VARCHAR}, #{voyageName,jdbcType=VARCHAR}, #{planName},
+                #{legBegin,jdbcType=VARCHAR}, #{legEnd,jdbcType=VARCHAR} , #{radius},#{etd,jdbcType=VARCHAR},#{eta,jdbcType=VARCHAR},
+                #{state,jdbcType=CHAR},#{createTime,jdbcType=TIMESTAMP}, #{updateTime}, #{url,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="addPlanDetail" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO t_ship_route_plan_detail
+        (id,order_num,longitude, latitude, true_course, `range`, distance_todo, wp_remark)
+        VALUES
+        <foreach collection="list" item="model" separator=",">
+            (#{model.id,jdbcType=BIGINT},#{model.orderNum,jdbcType=INTEGER},#{model.longitude,jdbcType=VARCHAR}, #{model.latitude,jdbcType=VARCHAR},
+            #{model.trueCourse,jdbcType=VARCHAR}, #{model.range,jdbcType=VARCHAR},
+            #{model.distanceTodo,jdbcType=VARCHAR},#{model.wpRemark,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="addPlanEnclosure" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO t_ship_route_plan_enclosure
+        (id,order_num,begin_left_longitude, begin_left_latitude, begin_right_longitude,begin_right_latitude,
+         end_left_longitude, end_left_latitude, end_right_longitude,end_right_latitude,true_course)
+        VALUES
+        <foreach collection="shipRoutePlanEnclosureList" item="model" separator=",">
+            (#{model.id,jdbcType=BIGINT},#{model.orderNum,jdbcType=INTEGER},
+            #{model.beginLeftLongitude,jdbcType=VARCHAR}, #{model.beginLeftLatitude,jdbcType=VARCHAR},
+            #{model.beginRightLongitude,jdbcType=VARCHAR}, #{model.beginRightLatitude,jdbcType=VARCHAR},
+            #{model.endLeftLongitude,jdbcType=VARCHAR}, #{model.endLeftLatitude,jdbcType=VARCHAR},
+            #{model.endRightLongitude,jdbcType=VARCHAR}, #{model.endRightLatitude,jdbcType=VARCHAR},
+            #{model.trueCourse,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <update id="updateStateToClose">
+        update t_ship_route_plan set state = '0' where state = '1' and  ship_id = #{shipId,jdbcType=BIGINT}
+    </update>
+    <update id="updatePlan" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipRoutePlan">
+        update t_ship_route_plan set voyage_number = #{voyageNumber}, voyage_name = #{voyageName},
+        plan_name = #{planName},leg_begin = #{legBegin}, leg_end = #{legEnd},electronic_radius = #{radius}, etd = #{etd}, eta = #{eta},
+        `state` = #{state}, update_time = #{updateTime}, url = #{url}
+        where id = #{id} and ship_id = #{shipId}
+    </update>
+    <delete id="deletePlan">
+        delete from t_ship_route_plan where id = #{id}
+    </delete>
+    <delete id="deletePlanDetail">
+        delete from t_ship_route_plan_detail where id = #{id}
+    </delete>
+    <delete id="deletePlanEnclosure">
+        delete from t_ship_route_plan_enclosure where id = #{id}
+    </delete>
+</mapper>

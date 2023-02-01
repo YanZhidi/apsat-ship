@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipRoutePlanAlarmDao">
+
+    <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.ShipRoutePlanAlarm">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="shipId" column="ship_id" jdbcType="VARCHAR"/>
+        <result property="planId" column="plan_id" jdbcType="VARCHAR"/>
+        <result property="occurrenceTime" column="occurrence_time" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="alarmType" column="alarm_type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,ship_id,plan_id,occurrence_time,description,<include refid="alarmTypeCase"/>
+    </sql>
+
+    <sql id="alarmTypeCase">
+        case alarm_type
+            when '0' then '偏航'
+            when '1' then '恢复航线'
+            when '2' then '目的地变更'
+            when '3' then '失去动力'
+            when '4' then '恢复动力'
+            when '5' then '触礁风险'
+            when '6' then '船舶有走锚风险'
+            when '7' then '船舶走锚风险消除'
+            when '8' then '台风预警'
+            when '9' then '搁浅风险'
+        end alarm_type
+    </sql>
+
+    <insert id="insertAlarm" parameterType="ShipRoutePlanAlarm">
+        insert into t_ship_route_plan_alarm
+        (ship_id, plan_id, occurrence_time, description, alarm_type)
+        values
+        (#{shipId,jdbcType=BIGINT}, #{planId,jdbcType=VARCHAR},
+         #{occurrenceTime,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{alarmType,jdbcType=VARCHAR})
+    </insert>
+    <insert id="batchInsertAlarm" >
+        insert into t_ship_route_plan_alarm
+        (ship_id, plan_id, occurrence_time, description, alarm_type)
+        values
+        <foreach collection="list" item="alarm" separator=",">
+            (#{alarm.shipId},#{alarm.planId},#{alarm.occurrenceTime},#{alarm.description},#{alarm.alarmType})
+        </foreach>
+    </insert>
+
+    <delete id="deleteAlarm">
+        update t_ship_route_plan_alarm set is_delete='1' where ship_id=#{shipId}
+    </delete>
+
+    <select id="findAlarmByParam" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from t_ship_route_plan_alarm
+        <where>
+            alarm_type != 5
+            <if test="null != criteria.shipIdList and criteria.shipIdList.size > 0">
+                and ship_id in
+                 <foreach collection="criteria.shipIdList" open="(" close=")" separator="," item="item">
+                     #{item}
+                 </foreach>
+            </if>
+            <if test="null != criteria.alarmTypeList and criteria.alarmTypeList.size > 0">
+                and alarm_type in
+                <foreach collection="criteria.alarmTypeList" open="(" close=")" separator="," item="item">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="criteria.startTime != null and criteria.startTime.length > 0">
+                and occurrence_time >= #{criteria.startTime}
+            </if>
+            <if test="criteria.endTime != null and criteria.endTime.length > 0">
+                and occurrence_time &lt; #{criteria.endTime}
+            </if>
+            <if test="null != shipIds and shipIds.size > 0">
+                and ship_id in
+                    <foreach collection="shipIds" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+            </if>
+        </where>
+        order by occurrence_time desc
+    </select>
+    <select id="findAlarmLimit" resultType="com.zkthinke.modules.apsat.ship.domain.ShipRoutePlanAlarm">
+        /*0:偏航 1:恢复航线 2.目的地变更 3.失去动力 4.恢复动力*/
+        select id,ship_id,plan_id,
+        <include refid="alarmTypeCase"/>,
+        description,occurrence_time
+        from t_ship_route_plan_alarm
+        where ship_id = #{shipId}
+        and alarm_type != 5
+        order by occurrence_time
+        desc limit 3
+    </select>
+
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ErrorLogMapper">
+  <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.ErrorLog">
+    <!--@mbg.generated-->
+    <!--@Table t_error_log-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="read_time" jdbcType="VARCHAR" property="readTime"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `type`, file_name
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.ErrorLog">
+    <!--@mbg.generated-->
+    insert into t_error_log (`type`, file_name,read_time)
+    values (#{type,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR},#{readTime})
+  </insert>
+</mapper>

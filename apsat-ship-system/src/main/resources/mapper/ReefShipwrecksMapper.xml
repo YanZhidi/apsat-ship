@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ReefShipwrecksMapper">
+
+    <select id="getReefList" resultType="com.zkthinke.modules.apsat.ship.domain.PointBO">
+        SELECT longitude,latitude,radius
+        FROM t_reef_island
+    </select>
+
+    <select id="getShipwrecksList" resultType="com.zkthinke.modules.apsat.ship.domain.PointBO">
+        SELECT longitude,latitude,radius
+        FROM t_shipwrecks
+    </select>
+</mapper>

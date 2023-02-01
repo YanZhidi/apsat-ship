@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.CustomTagMapper">
+    <sql id="customTagColumn">
+        id,user_id,name,type,radius
+    </sql>
+    <sql id="customTagPointColumn">
+        id,tag_id,longitude,latitude
+    </sql>
+    <resultMap id="customTag" type="com.zkthinke.modules.apsat.ship.domain.CustomTagPO" autoMapping="true">
+        <collection property="pointList" ofType="com.zkthinke.modules.apsat.ship.domain.CustomTagPointPO"
+                    select="com.zkthinke.modules.apsat.ship.mapper.CustomTagMapper.getCustomTagPointList"
+                    column="{tagId=id}" autoMapping="true"/>
+    </resultMap>
+    <select id="getCustomTagList" resultMap="customTag">
+        SELECT id,name,type,radius
+        FROM custom_tag
+        WHERE user_id = #{userId}
+    </select>
+    <select id="getCustomTagPointList" resultType="com.zkthinke.modules.apsat.ship.domain.CustomTagPointPO">
+        SELECT longitude,latitude
+        FROM custom_tag_point
+        WHERE tag_id = #{tagId}
+        ORDER BY id ASC
+    </select>
+    <insert id="addCustomTag" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.zkthinke.modules.apsat.ship.domain.CustomTagPO">
+        INSERT INTO custom_tag (user_id,name,type,radius)
+        VALUES (#{userId},#{name},#{type},#{radius})
+    </insert>
+    <insert id="addCustomTagPointList" >
+        INSERT INTO custom_tag_point (tag_id,longitude,latitude)
+        VALUES
+        <foreach collection="pointList" item="po" separator=",">
+            (#{tagId},#{po.longitude},#{po.latitude})
+        </foreach>
+    </insert>
+    <update id="updateCustomTag" parameterType="com.zkthinke.modules.apsat.ship.domain.CustomTagPO">
+        UPDATE custom_tag
+        SET user_id = #{userId}, name = #{name}, type = #{type}, radius = #{radius}
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteCustomTag" parameterType="com.zkthinke.modules.apsat.ship.domain.CustomTagPO">
+        DELETE FROM custom_tag WHERE id = #{id}
+    </delete>
+    <delete id="deleteCustomTagList" parameterType="com.zkthinke.modules.apsat.ship.domain.CustomTagPO">
+        DELETE FROM custom_tag_point WHERE tag_id = #{id}
+    </delete>
+</mapper>

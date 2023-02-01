@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.WaterDeepMapper">
+
+    <resultMap id="waterDeepLine" type="com.zkthinke.modules.apsat.ship.domain.WaterDeepLineBO">
+        <result column="name" property="name"/>
+        <result column="depth" property="depth"/>
+        <collection property="pointList" ofType="com.zkthinke.modules.apsat.ship.domain.WaterDeepPointBO">
+            <result column="longitude" property="longitude"/>
+            <result column="latitude" property="latitude"/>
+        </collection>
+    </resultMap>
+
+    <select id="getWaterDeepLineList" resultMap="waterDeepLine">
+        SELECT name,depth,longitude,latitude
+        from t_water_deep_line
+    </select>
+</mapper>

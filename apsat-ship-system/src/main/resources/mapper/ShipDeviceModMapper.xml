@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipDeviceModMapper">
+    <insert id="insert">
+        insert into t_ship_device_mod
+            (ship_id,
+            glll,     glljll,   glmd,   glwd,   glbz1,   glbz2,   glbz3,   glbz4,   glbz5,
+            glckll,   glckljll, glckmd, glckwd,
+            zjjkll,   zjjkljll, zjjkmd, zjjkwd, zjjkbz1, zjjkbz2, zjjkbz3, zjjkbz4, zjjkbz5,
+            zjckll,   zjckljll, zjckmd, zjckwd, zjckbz1, zjckbz2, zjckbz3, zjckbz4, zjckbz5,
+            fdjjkll,  fdjjkljll,fdjjkmd,fdjjkwd,fdjjkbz1,fdjjkbz2,fdjjkbz3,fdjjkbz4,fdjjkbz5,
+            fdjckll,  fdjckljll,fdjckmd,fdjckwd,fdjckbz1,fdjckbz2,fdjckbz3,fdjckbz4,fdjckbz5,
+            fdjglxh1,fdjglxh2,fdjglxh3,
+            device_id,data_sync_time)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.shipId},
+            #{item.glll},    #{item.glljll},   #{item.glmd},    #{item.glwd},   #{item.glbz1},   #{item.glbz2},   #{item.glbz3},   #{item.glbz4},   #{item.glbz5},
+            #{item.glckll},  #{item.glckljll}, #{item.glckmd},  #{item.glckwd},
+            #{item.zjjkll},  #{item.zjjkljll}, #{item.zjjkmd},  #{item.zjjkwd}, #{item.zjjkbz1}, #{item.zjjkbz2}, #{item.zjjkbz3}, #{item.zjjkbz4}, #{item.zjjkbz5},
+            #{item.zjckll},  #{item.zjckljll}, #{item.zjckmd},  #{item.zjckwd}, #{item.zjckbz1}, #{item.zjckbz2}, #{item.zjckbz3}, #{item.zjckbz4}, #{item.zjckbz5},
+            #{item.fdjjkll}, #{item.fdjjkljll},#{item.fdjjkmd}, #{item.fdjjkwd},#{item.fdjjkbz1},#{item.fdjjkbz2},#{item.fdjjkbz3},#{item.fdjjkbz4},#{item.fdjjkbz5},
+            #{item.fdjckll}, #{item.fdjckljll},#{item.fdjckmd}, #{item.fdjckwd},#{item.fdjckbz1},#{item.fdjckbz2},#{item.fdjckbz3},#{item.fdjckbz4},#{item.fdjckbz5},
+            #{item.fdjglxh1},#{item.fdjglxh2},#{item.fdjglxh3},
+             #{item.deviceId},#{item.dataSyncTime})
+        </foreach>
+    </insert>
+    <select id="findShipDeviceModList" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDeviceModBO">
+        select
+            *
+        from
+            t_ship_device_mod
+        where
+            ship_id =#{shipId}
+            AND data_sync_time >= #{begin}
+            AND data_sync_time &lt;= #{end}
+        order by
+            data_sync_time
+    </select>
+</mapper>

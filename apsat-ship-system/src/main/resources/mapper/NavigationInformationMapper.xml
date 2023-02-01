@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.NavigationInformationMapper">
+    <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.ShipDetailPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="ship_id" jdbcType="BIGINT" property="shipId"/>
+        <result column="sailing_status" jdbcType="VARCHAR" property="sailingStatus"/>
+        <result column="reset_voyage" jdbcType="VARCHAR" property="resetVoyage"/>
+        <result column="total_voyage" jdbcType="VARCHAR" property="totalVoyage"/>
+        <result column="steering_speed" jdbcType="VARCHAR" property="steeringSpeed"/>
+        <result column="ground_speed" jdbcType="VARCHAR" property="groundSpeed"/>
+        <result column="longitude" jdbcType="VARCHAR" property="longitude"/>
+        <result column="latitude" jdbcType="VARCHAR" property="latitude"/>
+        <result column="cog" jdbcType="VARCHAR" property="cog"/>
+        <result column="ship_head" jdbcType="VARCHAR" property="shipHead"/>
+        <result column="departure_time" jdbcType="BIGINT" property="departureTime"/>
+        <result column="eta" jdbcType="BIGINT" property="eta"/>
+        <result column="destination" jdbcType="VARCHAR" property="destination"/>
+        <result column="max_static_draft" jdbcType="VARCHAR" property="maxStaticDraft"/>
+        <result column="wind_speed" jdbcType="VARCHAR" property="windSpeed"/>
+        <result column="sensor_depth" jdbcType="VARCHAR" property="sensorDepth"/>
+        <result column="relative_wind" jdbcType="VARCHAR" property="relativeWind"/>
+        <result column="device_name" jdbcType="VARCHAR" property="deviceName"/>
+        <result column="create_time" jdbcType="BIGINT" property="createTime"/>
+        <result column="update_time" jdbcType="BIGINT" property="updateTime"/>
+        <result column="collect_time" jdbcType="BIGINT" property="collectTime"/>
+        <result column="departure" jdbcType="VARCHAR" property="departure"/>
+        <result column="source_id" jdbcType="BIGINT" property="sourceId"/>
+        <result column="mmsi_number" jdbcType="VARCHAR" property="mmsiNumber"/>
+        <result column="swsd" jdbcType="VARCHAR" property="swsd"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="call_sign" jdbcType="VARCHAR" property="callSign"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="hdt_heading" jdbcType="VARCHAR" property="hdtHeading"/>
+        <result column="rot_turn_rate" jdbcType="VARCHAR" property="rotTurnRate"/>
+        <result column="zda_time_zone" jdbcType="VARCHAR" property="zdaTimeZone"/>
+        <result column="zda_time" jdbcType="VARCHAR" property="zdaTime"/>
+        <result column="pst_speed" jdbcType="VARCHAR" property="pstSpeed"/>
+        <result column="pst_torque" jdbcType="VARCHAR" property="pstTorque"/>
+        <result column="pst_thrust" jdbcType="VARCHAR" property="pstThrust"/>
+        <result column="pst_power" jdbcType="VARCHAR" property="pstPower"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, ship_id, sailing_status, reset_voyage, total_voyage, steering_speed, ground_speed,
+    longitude, latitude, cog, ship_head, departure_time, eta, destination, max_static_draft,
+    wind_speed, sensor_depth, relative_wind, device_name, create_time, update_time, collect_time,
+    departure, source_id, mmsi_number, swsd, `name`, call_sign, `type`, imo_number, data_sync_time,hdt_heading,
+    rot_turn_rate, zda_time_zone, zda_time, pst_speed, pst_torque, pst_thrust, pst_power
+    </sql>
+
+    <insert id="insert" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipDetailPO">
+        insert into t_navigation_information (ship_id, sailing_status, reset_voyage,
+                                              total_voyage, steering_speed, ground_speed,
+                                              longitude, latitude, cog,
+                                              ship_head, departure_time, eta,
+                                              destination, max_static_draft, wind_speed,
+                                              sensor_depth, relative_wind, device_name,
+                                              create_time, update_time, collect_time,
+                                              departure, source_id, mmsi_number,
+                                              swsd, `name`, call_sign,
+                                              `type`, imo_number, data_sync_time, hdt_heading,
+                                              rot_turn_rate, zda_time_zone, zda_time, pst_speed, pst_torque, pst_thrust,
+                                              pst_power,typeof_acquistition,timeof_data,reference_target2,target_status1,target_name
+                                             ,speed_didtanceunits,timeto_cpa,distanceof_closest
+                                             ,target_course_degree,target_speed,target_azimuth_angle
+                                             ,target_distacefrom_ownShip,target_number,speed_units,speed_reference,vessel_speed
+                                             ,course_reference,vessel_course,heading_status,heading,starboard_rudder_sensor,starboard_status
+                                             ,longitudinal_water_speed,transverse_water_speed,longitudinal_ground_speed
+                                             ,transverse_ground_speed,stern_transverse_water_speed,stern_transverse_ground_speed,data_valid_state)
+        values (#{shipId,jdbcType=BIGINT}, #{sailingStatus,jdbcType=VARCHAR}, #{resetVoyage,jdbcType=VARCHAR},
+                #{totalVoyage,jdbcType=VARCHAR}, #{steeringSpeed,jdbcType=VARCHAR}, #{groundSpeed,jdbcType=VARCHAR},
+                #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, #{cog,jdbcType=VARCHAR},
+                #{shipHead,jdbcType=VARCHAR}, #{departureTime,jdbcType=BIGINT}, #{eta,jdbcType=BIGINT},
+                #{destination,jdbcType=VARCHAR}, #{maxStaticDraft,jdbcType=VARCHAR}, #{windSpeed,jdbcType=VARCHAR},
+                #{sensorDepth,jdbcType=VARCHAR}, #{relativeWind,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR},
+                #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{collectTime,jdbcType=BIGINT},
+                #{departure,jdbcType=VARCHAR}, #{sourceId,jdbcType=BIGINT}, #{mmsiNumber,jdbcType=VARCHAR},
+                #{swsd,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{callSign,jdbcType=VARCHAR},
+                #{type,jdbcType=VARCHAR}, #{imoNumber,jdbcType=VARCHAR}, #{dataSyncTime,jdbcType=TIMESTAMP},
+                #{hdtHeading,jdbcType=VARCHAR}, #{rotTurnRate,jdbcType=VARCHAR},
+                #{zdaTimeZone,jdbcType=VARCHAR}, #{zdaTime,jdbcType=VARCHAR}, #{pstSpeed,jdbcType=VARCHAR},
+                #{pstTorque,jdbcType=VARCHAR}, #{pstThrust,jdbcType=VARCHAR}, #{pstPower,jdbcType=VARCHAR},
+                #{typeofAcquistition,jdbcType=VARCHAR},#{timeofData,jdbcType=VARCHAR},
+                #{referenceTarget2,jdbcType=VARCHAR},#{targetStatus1,jdbcType=VARCHAR},
+                #{targetName,jdbcType=VARCHAR},#{speedDidtanceunits,jdbcType=VARCHAR},
+                #{timetoCPA,jdbcType=VARCHAR},#{distanceofClosest,jdbcType=VARCHAR},
+                #{targetCourseDegree,jdbcType=VARCHAR},#{targetSpeed,jdbcType=VARCHAR},
+                #{targetAzimuthAngle,jdbcType=VARCHAR},#{targetDistacefromOwnShip,jdbcType=VARCHAR},
+                #{targetNumber,jdbcType=VARCHAR},#{speedUnits,jdbcType=VARCHAR},
+                #{speedReference,jdbcType=VARCHAR},#{vesselSpeed,jdbcType=VARCHAR},
+                #{courseReference,jdbcType=VARCHAR},#{vesselCourse,jdbcType=VARCHAR},
+                #{headingStatus,jdbcType=VARCHAR},#{heading,jdbcType=VARCHAR},
+                #{starboardRudderSensor,jdbcType=VARCHAR},#{starboardStatus,jdbcType=VARCHAR},
+                #{longitudinalWaterSpeed,jdbcType=VARCHAR},#{transverseWaterSpeed,jdbcType=VARCHAR},
+                #{longitudinalGroundSpeed,jdbcType=VARCHAR},#{transverseGroundSpeed,jdbcType=VARCHAR},
+                #{sternTransverseWaterSpeed,jdbcType=VARCHAR},#{sternTransverseGroundSpeed,jdbcType=VARCHAR},
+                #{dataValidState,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.zkthinke.modules.apsat.ship.domain.ShipDetailPO">
+        update t_navigation_information
+        set ship_id          = #{shipId,jdbcType=BIGINT},
+            sailing_status   = #{sailingStatus,jdbcType=VARCHAR},
+            reset_voyage     = #{resetVoyage,jdbcType=VARCHAR},
+            total_voyage     = #{totalVoyage,jdbcType=VARCHAR},
+            steering_speed   = #{steeringSpeed,jdbcType=VARCHAR},
+            ground_speed     = #{groundSpeed,jdbcType=VARCHAR},
+            longitude        = #{longitude,jdbcType=VARCHAR},
+            latitude         = #{latitude,jdbcType=VARCHAR},
+            cog              = #{cog,jdbcType=VARCHAR},
+            ship_head        = #{shipHead,jdbcType=VARCHAR},
+            departure_time   = #{departureTime,jdbcType=BIGINT},
+            eta              = #{eta,jdbcType=BIGINT},
+            destination      = #{destination,jdbcType=VARCHAR},
+            max_static_draft = #{maxStaticDraft,jdbcType=VARCHAR},
+            wind_speed       = #{windSpeed,jdbcType=VARCHAR},
+            sensor_depth     = #{sensorDepth,jdbcType=VARCHAR},
+            relative_wind    = #{relativeWind,jdbcType=VARCHAR},
+            device_name      = #{deviceName,jdbcType=VARCHAR},
+            create_time      = #{createTime,jdbcType=BIGINT},
+            update_time      = #{updateTime,jdbcType=BIGINT},
+            collect_time     = #{collectTime,jdbcType=BIGINT},
+            departure        = #{departure,jdbcType=VARCHAR},
+            source_id        = #{sourceId,jdbcType=BIGINT},
+            mmsi_number      = #{mmsiNumber,jdbcType=VARCHAR},
+            swsd             = #{swsd,jdbcType=VARCHAR},
+            `name`           = #{name,jdbcType=VARCHAR},
+            call_sign        = #{callSign,jdbcType=VARCHAR},
+            `type`           = #{type,jdbcType=VARCHAR},
+            imo_number       = #{imoNumber,jdbcType=VARCHAR},
+            data_sync_time   = #{dataSyncTime,jdbcType=TIMESTAMP},
+            hdt_heading      = #{hdtHeading,jdbcType=VARCHAR},
+            rot_turn_rate    = #{rotTurnRate,jdbcType=VARCHAR},
+            zda_time_zone    = #{zdaTimeZone,jdbcType=VARCHAR},
+            zda_time         = #{zdaTime,jdbcType=VARCHAR},
+            pst_speed        = #{pstSpeed,jdbcType=VARCHAR},
+            pst_torque       = #{pstTorque,jdbcType=VARCHAR},
+            pst_thrust       = #{pstThrust,jdbcType=VARCHAR},
+            pst_power        = #{pstPower,jdbcType=VARCHAR},
+            typeof_acquistition = #{typeofAcquistition,jdbcType=VARCHAR},
+            timeof_data = #{timeofData,jdbcType=VARCHAR},
+            reference_target2 = #{referenceTarget2,jdbcType=VARCHAR},
+            target_status1 = #{targetStatus1,jdbcType=VARCHAR},
+            target_name = #{targetName,jdbcType=VARCHAR},
+            speed_didtanceunits = #{speedDidtanceunits,jdbcType=VARCHAR},
+            timeto_cpa = #{timetoCPA,jdbcType=VARCHAR},
+            distanceof_closest = #{distanceofClosest,jdbcType=VARCHAR},
+            target_course_degree = #{targetCourseDegree,jdbcType=VARCHAR},
+            target_speed = #{targetSpeed,jdbcType=VARCHAR},
+            target_azimuth_angle = #{targetAzimuthAngle,jdbcType=VARCHAR},
+            target_distacefrom_ownShip = #{targetDistacefromOwnShip,jdbcType=VARCHAR},
+            target_number = #{targetNumber,jdbcType=VARCHAR},
+            speed_units = #{speedUnits,jdbcType=VARCHAR},
+            speed_reference = #{speedReference,jdbcType=VARCHAR},
+            vessel_speed = #{vesselSpeed,jdbcType=VARCHAR},
+            course_reference = #{courseReference,jdbcType=VARCHAR},
+            vessel_course = #{vesselCourse,jdbcType=VARCHAR},
+            heading_status = #{headingStatus,jdbcType=VARCHAR},
+            heading = #{heading,jdbcType=VARCHAR},
+            starboard_rudder_sensor = #{starboardRudderSensor,jdbcType=VARCHAR},
+            starboard_status = #{starboardStatus,jdbcType=VARCHAR},
+            longitudinal_water_speed = #{longitudinalWaterSpeed,jdbcType=VARCHAR},
+            transverse_water_speed = #{transverseWaterSpeed,jdbcType=VARCHAR},
+            longitudinal_ground_speed = #{longitudinalGroundSpeed,jdbcType=VARCHAR},
+            transverse_ground_speed = #{transverseGroundSpeed,jdbcType=VARCHAR},
+            stern_transverse_water_speed = #{sternTransverseWaterSpeed,jdbcType=VARCHAR},
+            stern_transverse_ground_speed = #{sternTransverseGroundSpeed,jdbcType=VARCHAR},
+            data_valid_state = #{dataValidState,jdbcType=VARCHAR}
+
+            where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="getNavigation" resultType="com.zkthinke.modules.apsat.ship.domain.ShipDetailPO"
+            parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        t_navigation_information
+        where
+        mmsi_number = #{mmsi}
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select COUNT(*)
+        from t_navigation_information
+        where mmsi_number = #{mmsi}
+    </select>
+
+
+  <select id="getZdaTime" resultType="java.lang.String">
+    select zda_time
+    from t_navigation_information
+    ORDER BY zda_time DESC
+    limit 1
+  </select>
+</mapper>

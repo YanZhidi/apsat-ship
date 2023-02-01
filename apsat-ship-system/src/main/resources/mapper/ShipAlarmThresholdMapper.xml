@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.ShipAlarmThresholdMapper">
+    <sql id="DefaultField">
+        merit,threshold,unit,state
+    </sql>
+    <sql id="ThresholdField">
+        ship_id,merit,threshold,unit,state,update_time,create_time,create_user
+    </sql>
+    <select id="queryShipAlarmThreshold" resultType="com.zkthinke.modules.apsat.ship.domain.ShipAlarmThresholdPO">
+        select
+            ship_id as shipId,
+            <include refid="DefaultField"/>,
+            update_time as updateTime,
+            create_time as createTime,
+            create_user as createUser
+        from t_ship_alarm_threshold
+        where ship_id = #{shipId}
+    </select>
+    <select id="queryShipAlarmThresholdDefault" resultType="com.zkthinke.modules.apsat.ship.domain.ShipAlarmThresholdPO">
+        select <include refid="DefaultField"/>
+        from t_ship_alarm_threshold_default
+    </select>
+    <insert id="batchInsertShipAlarmThreshold">
+        insert into t_ship_alarm_threshold (<include refid="ThresholdField"/>)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.shipId},#{item.merit},#{item.threshold},#{item.unit},#{item.state},#{item.updateTime},#{item.createTime},#{item.createUser})
+        </foreach>
+    </insert>
+    <update id="updateShipAlarmThreshold">
+        update t_ship_alarm_threshold
+        set threshold = #{threshold},unit = #{unit},state = #{state},update_time = #{updateTime}
+        where ship_id = #{shipId} and merit = #{merit}
+    </update>
+    <select id="getThresholdLimit" resultType="java.lang.String">
+        select threshold
+        from t_ship_alarm_threshold
+        where ship_id = #{shipId} and merit = #{merit}
+    </select>
+    <select id="getThresholdLimitDefault" resultType="java.lang.String">
+        select threshold
+        from t_ship_alarm_threshold_default
+        where merit = #{merit}
+    </select>
+</mapper>

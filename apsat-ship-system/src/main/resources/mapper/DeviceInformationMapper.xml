@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zkthinke.modules.apsat.ship.mapper.DeviceInformationMapper">
+  <resultMap id="BaseResultMap" type="com.zkthinke.modules.apsat.ship.domain.DeviceInformationPO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="imo_number" property="imoNumber" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+    <result column="revolution_speed" property="revolutionSpeed" jdbcType="VARCHAR" />
+    <result column="host_load" property="hostLoad" jdbcType="VARCHAR" />
+    <result column="running_hours" property="runningHours" jdbcType="VARCHAR" />
+    <result column="sind_speed" property="sindSpeed" jdbcType="VARCHAR" />
+    <result column="supercharger_speed" property="superchargerSpeed" jdbcType="VARCHAR" />
+    <result column="mefc" property="mefc" jdbcType="VARCHAR" />
+    <result column="meloip" property="meloip" jdbcType="VARCHAR" />
+    <result column="meloot" property="meloot" jdbcType="VARCHAR" />
+    <result column="meloit" property="meloit" jdbcType="VARCHAR" />
+    <result column="sloip" property="sloip" jdbcType="VARCHAR" />
+    <result column="sloot" property="sloot" jdbcType="VARCHAR" />
+    <result column="fip" property="fip" jdbcType="VARCHAR" />
+    <result column="fit" property="fit" jdbcType="VARCHAR" />
+    <result column="pcoip" property="pcoip" jdbcType="VARCHAR" />
+    <result column="cloit" property="cloit" jdbcType="VARCHAR" />
+    <result column="mejip" property="mejip" jdbcType="VARCHAR" />
+    <result column="mejit" property="mejit" jdbcType="VARCHAR" />
+    <result column="starting_air_pressure" property="startingAirPressure" jdbcType="VARCHAR" />
+    <result column="siep" property="siep" jdbcType="VARCHAR" />
+    <result column="siet" property="siet" jdbcType="VARCHAR" />
+    <result column="control_air_pressure" property="controlAirPressure" jdbcType="VARCHAR" />
+    <result column="smp" property="smp" jdbcType="VARCHAR" />
+    <result column="smt" property="smt" jdbcType="VARCHAR" />
+    <result column="tbbt" property="tbbt" jdbcType="VARCHAR" />
+    <result column="meav" property="meav" jdbcType="VARCHAR" />
+    <result column="sae_1" property="sae1" jdbcType="VARCHAR" />
+    <result column="pog_1" property="pog1" jdbcType="VARCHAR" />
+    <result column="ats_1" property="ats1" jdbcType="VARCHAR" />
+    <result column="afp_1" property="afp1" jdbcType="VARCHAR" />
+    <result column="aft_1" property="aft1" jdbcType="VARCHAR" />
+    <result column="alop_1" property="alop1" jdbcType="VARCHAR" />
+    <result column="alot_1" property="alot1" jdbcType="VARCHAR" />
+    <result column="sae_2" property="sae2" jdbcType="VARCHAR" />
+    <result column="pog_2" property="pog2" jdbcType="VARCHAR" />
+    <result column="ats_2" property="ats2" jdbcType="VARCHAR" />
+    <result column="afp_2" property="afp2" jdbcType="VARCHAR" />
+    <result column="aft_2" property="aft2" jdbcType="VARCHAR" />
+    <result column="alop_2" property="alop2" jdbcType="VARCHAR" />
+    <result column="alot_2" property="alot2" jdbcType="VARCHAR" />
+    <result column="sae_3" property="sae3" jdbcType="VARCHAR" />
+    <result column="pog_3" property="pog3" jdbcType="VARCHAR" />
+    <result column="ats_3" property="ats3" jdbcType="VARCHAR" />
+    <result column="afp_3" property="afp3" jdbcType="VARCHAR" />
+    <result column="aft_3" property="aft3" jdbcType="VARCHAR" />
+    <result column="alop_3" property="alop3" jdbcType="VARCHAR" />
+    <result column="alot_3" property="alot3" jdbcType="VARCHAR" />
+    <result column="boiler_steam_pressure" property="boilerSteamPressure" jdbcType="VARCHAR" />
+    <result column="boiler_water_level" property="boilerWaterLevel" jdbcType="VARCHAR" />
+    <result column="bot" property="bot" jdbcType="VARCHAR" />
+    <result column="stern_draught" property="sternDraught" jdbcType="VARCHAR" />
+    <result column="port_draft" property="portDraft" jdbcType="VARCHAR" />
+    <result column="starboard_draft" property="starboardDraft" jdbcType="VARCHAR" />
+    <result column="stem_draft" property="stemDraft" jdbcType="VARCHAR" />
+    <result column="trim" property="trim" jdbcType="VARCHAR" />
+    <result column="heel" property="heel" jdbcType="VARCHAR" />
+    <result column="mefif" property="mefif" jdbcType="VARCHAR" />
+    <result column="mefof" property="mefof" jdbcType="VARCHAR" />
+    <result column="gfif" property="gfif" jdbcType="VARCHAR" />
+    <result column="gfof" property="gfof" jdbcType="VARCHAR" />
+    <result column="bfoif" property="bfoif" jdbcType="VARCHAR" />
+    <result column="bfoof" property="bfoof" jdbcType="VARCHAR" />
+
+    <result column="soet" property="soet" jdbcType="VARCHAR" />
+    <result column="sefif" property="sefif" jdbcType="VARCHAR" />
+    <result column="sefof" property="sefof" jdbcType="VARCHAR" />
+    <result column="runstatus1" property="runstatus1" jdbcType="VARCHAR" />
+    <result column="runstatus2" property="runstatus2" jdbcType="VARCHAR" />
+    <result column="runstatus3" property="runstatus3" jdbcType="VARCHAR" />
+    <result column="data_sync_time" property="dataSyncTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, imo_number, name, device_name, revolution_speed, host_load, running_hours, sind_speed,
+    supercharger_speed, mefc, meloip, meloot, meloit, sloip, sloot, fip, fit, pcoip,
+    cloit, mejip, mejit, starting_air_pressure, siep, siet, control_air_pressure, smp,
+    smt, tbbt, meav, sae_1, pog_1, ats_1, afp_1, aft_1, alop_1, alot_1, sae_2, pog_2,
+    ats_2, afp_2, aft_2, alop_2, alot_2, sae_3, pog_3, ats_3, afp_3, aft_3, alop_3, alot_3,
+    boiler_steam_pressure, boiler_water_level, bot, stern_draught, port_draft, starboard_draft,
+    stem_draft, trim, heel, mefif, mefof, gfif, gfof, bfoif, bfoof,soet,sefif,sefof,runstatus1,runstatus2,runstatus3,data_sync_time
+  </sql>
+
+  <select id="getDeviceInfoByImoNumber" resultType="com.zkthinke.modules.apsat.ship.domain.DeviceInformationPO">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    t_ship_device
+    where
+    imo_number =#{imoNumber}
+    and
+    data_sync_time =#{dataSyncTime}
+    and
+    name =#{name}
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from t_ship_device
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_ship_device
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zkthinke.modules.apsat.ship.domain.DeviceInformationPO" >
+    insert into t_ship_device (id, imo_number, name,
+                                      device_name, revolution_speed, host_load,
+                                      running_hours, sind_speed, supercharger_speed,
+                                      mefc, meloip, meloot,
+                                      meloit, sloip, sloot,
+                                      fip, fit, pcoip, cloit,
+                                      mejip, mejit, starting_air_pressure,
+                                      siep, siet, control_air_pressure,
+                                      smp, smt, tbbt, meav,
+                                      sae_1, pog_1, ats_1, afp_1,
+                                      aft_1, alop_1, alot_1,
+                                      sae_2, pog_2, ats_2, afp_2,
+                                      aft_2, alop_2, alot_2,
+                                      sae_3, pog_3, ats_3, afp_3,
+                                      aft_3, alop_3, alot_3,
+                                      boiler_steam_pressure, boiler_water_level,
+                                      bot, stern_draught, port_draft,
+                                      starboard_draft, stem_draft, trim,
+                                      heel, mefif, mefof,
+                                      gfif, gfof, bfoif,
+                                      bfoof,data_sync_time,runstatus1,runstatus2,runstatus3,sefif,sefof,soet)
+    values (#{id,jdbcType=BIGINT}, #{imoNumber,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+            #{deviceName,jdbcType=VARCHAR}, #{revolutionSpeed,jdbcType=VARCHAR}, #{hostLoad,jdbcType=VARCHAR},
+            #{runningHours,jdbcType=VARCHAR}, #{sindSpeed,jdbcType=VARCHAR}, #{superchargerSpeed,jdbcType=VARCHAR},
+            #{mefc,jdbcType=VARCHAR}, #{meloip,jdbcType=VARCHAR}, #{meloot,jdbcType=VARCHAR},
+            #{meloit,jdbcType=VARCHAR}, #{sloip,jdbcType=VARCHAR}, #{sloot,jdbcType=VARCHAR},
+            #{fip,jdbcType=VARCHAR}, #{fit,jdbcType=VARCHAR}, #{pcoip,jdbcType=VARCHAR}, #{cloit,jdbcType=VARCHAR},
+            #{mejip,jdbcType=VARCHAR}, #{mejit,jdbcType=VARCHAR}, #{startingAirPressure,jdbcType=VARCHAR},
+            #{siep,jdbcType=VARCHAR}, #{siet,jdbcType=VARCHAR}, #{controlAirPressure,jdbcType=VARCHAR},
+            #{smp,jdbcType=VARCHAR}, #{smt,jdbcType=VARCHAR}, #{tbbt,jdbcType=VARCHAR}, #{meav,jdbcType=VARCHAR},
+            #{sae1,jdbcType=VARCHAR}, #{pog1,jdbcType=VARCHAR}, #{ats1,jdbcType=VARCHAR}, #{afp1,jdbcType=VARCHAR},
+            #{aft1,jdbcType=VARCHAR}, #{alop1,jdbcType=VARCHAR}, #{alot1,jdbcType=VARCHAR},
+            #{sae2,jdbcType=VARCHAR}, #{pog2,jdbcType=VARCHAR}, #{ats2,jdbcType=VARCHAR}, #{afp2,jdbcType=VARCHAR},
+            #{aft2,jdbcType=VARCHAR}, #{alop2,jdbcType=VARCHAR}, #{alot2,jdbcType=VARCHAR},
+            #{sae3,jdbcType=VARCHAR}, #{pog3,jdbcType=VARCHAR}, #{ats3,jdbcType=VARCHAR}, #{afp3,jdbcType=VARCHAR},
+            #{aft3,jdbcType=VARCHAR}, #{alop3,jdbcType=VARCHAR}, #{alot3,jdbcType=VARCHAR},
+            #{boilerSteamPressure,jdbcType=VARCHAR}, #{boilerWaterLevel,jdbcType=VARCHAR},
+            #{bot,jdbcType=VARCHAR}, #{sternDraught,jdbcType=VARCHAR}, #{portDraft,jdbcType=VARCHAR},
+            #{starboardDraft,jdbcType=VARCHAR}, #{stemDraft,jdbcType=VARCHAR}, #{trim,jdbcType=VARCHAR},
+            #{heel,jdbcType=VARCHAR}, #{mefif,jdbcType=VARCHAR}, #{mefof,jdbcType=VARCHAR},
+            #{gfif,jdbcType=VARCHAR}, #{gfof,jdbcType=VARCHAR}, #{bfoif,jdbcType=VARCHAR},
+            #{bfoof,jdbcType=VARCHAR},#{dataSyncTime,jdbcType=TIMESTAMP},#{runstatus1,jdbcType=VARCHAR}, #{runstatus2,jdbcType=VARCHAR},#{runstatus3,jdbcType=VARCHAR},
+            #{sefif,jdbcType=VARCHAR},#{sefof,jdbcType=VARCHAR},#{soet,jdbcType=VARCHAR}
+           )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zkthinke.modules.apsat.ship.domain.DeviceInformationPO" >
+    insert into t_ship_device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="imoNumber != null" >
+        imo_number,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="deviceName != null" >
+        device_name,
+      </if>
+      <if test="revolutionSpeed != null" >
+        revolution_speed,
+      </if>
+      <if test="hostLoad != null" >
+        host_load,
+      </if>
+      <if test="runningHours != null" >
+        running_hours,
+      </if>
+      <if test="sindSpeed != null" >
+        sind_speed,
+      </if>
+      <if test="superchargerSpeed != null" >
+        supercharger_speed,
+      </if>
+      <if test="mefc != null" >
+        mefc,
+      </if>
+      <if test="meloip != null" >
+        meloip,
+      </if>
+      <if test="meloot != null" >
+        meloot,
+      </if>
+      <if test="meloit != null" >
+        meloit,
+      </if>
+      <if test="sloip != null" >
+        sloip,
+      </if>
+      <if test="sloot != null" >
+        sloot,
+      </if>
+      <if test="fip != null" >
+        fip,
+      </if>
+      <if test="fit != null" >
+        fit,
+      </if>
+      <if test="pcoip != null" >
+        pcoip,
+      </if>
+      <if test="cloit != null" >
+        cloit,
+      </if>
+      <if test="mejip != null" >
+        mejip,
+      </if>
+      <if test="mejit != null" >
+        mejit,
+      </if>
+      <if test="startingAirPressure != null" >
+        starting_air_pressure,
+      </if>
+      <if test="siep != null" >
+        siep,
+      </if>
+      <if test="siet != null" >
+        siet,
+      </if>
+      <if test="controlAirPressure != null" >
+        control_air_pressure,
+      </if>
+      <if test="smp != null" >
+        smp,
+      </if>
+      <if test="smt != null" >
+        smt,
+      </if>
+      <if test="tbbt != null" >
+        tbbt,
+      </if>
+      <if test="meav != null" >
+        meav,
+      </if>
+      <if test="sae1 != null" >
+        sae_1,
+      </if>
+      <if test="pog1 != null" >
+        pog_1,
+      </if>
+      <if test="ats1 != null" >
+        ats_1,
+      </if>
+      <if test="afp1 != null" >
+        afp_1,
+      </if>
+      <if test="aft1 != null" >
+        aft_1,
+      </if>
+      <if test="alop1 != null" >
+        alop_1,
+      </if>
+      <if test="alot1 != null" >
+        alot_1,
+      </if>
+      <if test="sae2 != null" >
+        sae_2,
+      </if>
+      <if test="pog2 != null" >
+        pog_2,
+      </if>
+      <if test="ats2 != null" >
+        ats_2,
+      </if>
+      <if test="afp2 != null" >
+        afp_2,
+      </if>
+      <if test="aft2 != null" >
+        aft_2,
+      </if>
+      <if test="alop2 != null" >
+        alop_2,
+      </if>
+      <if test="alot2 != null" >
+        alot_2,
+      </if>
+      <if test="sae3 != null" >
+        sae_3,
+      </if>
+      <if test="pog3 != null" >
+        pog_3,
+      </if>
+      <if test="ats3 != null" >
+        ats_3,
+      </if>
+      <if test="afp3 != null" >
+        afp_3,
+      </if>
+      <if test="aft3 != null" >
+        aft_3,
+      </if>
+      <if test="alop3 != null" >
+        alop_3,
+      </if>
+      <if test="alot3 != null" >
+        alot_3,
+      </if>
+      <if test="boilerSteamPressure != null" >
+        boiler_steam_pressure,
+      </if>
+      <if test="boilerWaterLevel != null" >
+        boiler_water_level,
+      </if>
+      <if test="bot != null" >
+        bot,
+      </if>
+      <if test="sternDraught != null" >
+        stern_draught,
+      </if>
+      <if test="portDraft != null" >
+        port_draft,
+      </if>
+      <if test="starboardDraft != null" >
+        starboard_draft,
+      </if>
+      <if test="stemDraft != null" >
+        stem_draft,
+      </if>
+      <if test="trim != null" >
+        trim,
+      </if>
+      <if test="heel != null" >
+        heel,
+      </if>
+      <if test="mefif != null" >
+        mefif,
+      </if>
+      <if test="mefof != null" >
+        mefof,
+      </if>
+      <if test="gfif != null" >
+        gfif,
+      </if>
+      <if test="gfof != null" >
+        gfof,
+      </if>
+      <if test="bfoif != null" >
+        bfoif,
+      </if>
+      <if test="bfoof != null" >
+        bfoof,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="imoNumber != null" >
+        #{imoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="revolutionSpeed != null" >
+        #{revolutionSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="hostLoad != null" >
+        #{hostLoad,jdbcType=VARCHAR},
+      </if>
+      <if test="runningHours != null" >
+        #{runningHours,jdbcType=VARCHAR},
+      </if>
+      <if test="sindSpeed != null" >
+        #{sindSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="superchargerSpeed != null" >
+        #{superchargerSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="mefc != null" >
+        #{mefc,jdbcType=VARCHAR},
+      </if>
+      <if test="meloip != null" >
+        #{meloip,jdbcType=VARCHAR},
+      </if>
+      <if test="meloot != null" >
+        #{meloot,jdbcType=VARCHAR},
+      </if>
+      <if test="meloit != null" >
+        #{meloit,jdbcType=VARCHAR},
+      </if>
+      <if test="sloip != null" >
+        #{sloip,jdbcType=VARCHAR},
+      </if>
+      <if test="sloot != null" >
+        #{sloot,jdbcType=VARCHAR},
+      </if>
+      <if test="fip != null" >
+        #{fip,jdbcType=VARCHAR},
+      </if>
+      <if test="fit != null" >
+        #{fit,jdbcType=VARCHAR},
+      </if>
+      <if test="pcoip != null" >
+        #{pcoip,jdbcType=VARCHAR},
+      </if>
+      <if test="cloit != null" >
+        #{cloit,jdbcType=VARCHAR},
+      </if>
+      <if test="mejip != null" >
+        #{mejip,jdbcType=VARCHAR},
+      </if>
+      <if test="mejit != null" >
+        #{mejit,jdbcType=VARCHAR},
+      </if>
+      <if test="startingAirPressure != null" >
+        #{startingAirPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="siep != null" >
+        #{siep,jdbcType=VARCHAR},
+      </if>
+      <if test="siet != null" >
+        #{siet,jdbcType=VARCHAR},
+      </if>
+      <if test="controlAirPressure != null" >
+        #{controlAirPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="smp != null" >
+        #{smp,jdbcType=VARCHAR},
+      </if>
+      <if test="smt != null" >
+        #{smt,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbt != null" >
+        #{tbbt,jdbcType=VARCHAR},
+      </if>
+      <if test="meav != null" >
+        #{meav,jdbcType=VARCHAR},
+      </if>
+      <if test="sae1 != null" >
+        #{sae1,jdbcType=VARCHAR},
+      </if>
+      <if test="pog1 != null" >
+        #{pog1,jdbcType=VARCHAR},
+      </if>
+      <if test="ats1 != null" >
+        #{ats1,jdbcType=VARCHAR},
+      </if>
+      <if test="afp1 != null" >
+        #{afp1,jdbcType=VARCHAR},
+      </if>
+      <if test="aft1 != null" >
+        #{aft1,jdbcType=VARCHAR},
+      </if>
+      <if test="alop1 != null" >
+        #{alop1,jdbcType=VARCHAR},
+      </if>
+      <if test="alot1 != null" >
+        #{alot1,jdbcType=VARCHAR},
+      </if>
+      <if test="sae2 != null" >
+        #{sae2,jdbcType=VARCHAR},
+      </if>
+      <if test="pog2 != null" >
+        #{pog2,jdbcType=VARCHAR},
+      </if>
+      <if test="ats2 != null" >
+        #{ats2,jdbcType=VARCHAR},
+      </if>
+      <if test="afp2 != null" >
+        #{afp2,jdbcType=VARCHAR},
+      </if>
+      <if test="aft2 != null" >
+        #{aft2,jdbcType=VARCHAR},
+      </if>
+      <if test="alop2 != null" >
+        #{alop2,jdbcType=VARCHAR},
+      </if>
+      <if test="alot2 != null" >
+        #{alot2,jdbcType=VARCHAR},
+      </if>
+      <if test="sae3 != null" >
+        #{sae3,jdbcType=VARCHAR},
+      </if>
+      <if test="pog3 != null" >
+        #{pog3,jdbcType=VARCHAR},
+      </if>
+      <if test="ats3 != null" >
+        #{ats3,jdbcType=VARCHAR},
+      </if>
+      <if test="afp3 != null" >
+        #{afp3,jdbcType=VARCHAR},
+      </if>
+      <if test="aft3 != null" >
+        #{aft3,jdbcType=VARCHAR},
+      </if>
+      <if test="alop3 != null" >
+        #{alop3,jdbcType=VARCHAR},
+      </if>
+      <if test="alot3 != null" >
+        #{alot3,jdbcType=VARCHAR},
+      </if>
+      <if test="boilerSteamPressure != null" >
+        #{boilerSteamPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="boilerWaterLevel != null" >
+        #{boilerWaterLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bot != null" >
+        #{bot,jdbcType=VARCHAR},
+      </if>
+      <if test="sternDraught != null" >
+        #{sternDraught,jdbcType=VARCHAR},
+      </if>
+      <if test="portDraft != null" >
+        #{portDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="starboardDraft != null" >
+        #{starboardDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="stemDraft != null" >
+        #{stemDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="trim != null" >
+        #{trim,jdbcType=VARCHAR},
+      </if>
+      <if test="heel != null" >
+        #{heel,jdbcType=VARCHAR},
+      </if>
+      <if test="mefif != null" >
+        #{mefif,jdbcType=VARCHAR},
+      </if>
+      <if test="mefof != null" >
+        #{mefof,jdbcType=VARCHAR},
+      </if>
+      <if test="gfif != null" >
+        #{gfif,jdbcType=VARCHAR},
+      </if>
+      <if test="gfof != null" >
+        #{gfof,jdbcType=VARCHAR},
+      </if>
+      <if test="bfoif != null" >
+        #{bfoif,jdbcType=VARCHAR},
+      </if>
+      <if test="bfoof != null" >
+        #{bfoof,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkthinke.modules.apsat.ship.domain.DeviceInformationPO" >
+    update t_ship_device
+    <set >
+      <if test="imoNumber != null" >
+        imo_number = #{imoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="revolutionSpeed != null" >
+        revolution_speed = #{revolutionSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="hostLoad != null" >
+        host_load = #{hostLoad,jdbcType=VARCHAR},
+      </if>
+      <if test="runningHours != null" >
+        running_hours = #{runningHours,jdbcType=VARCHAR},
+      </if>
+      <if test="sindSpeed != null" >
+        sind_speed = #{sindSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="superchargerSpeed != null" >
+        supercharger_speed = #{superchargerSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="mefc != null" >
+        mefc = #{mefc,jdbcType=VARCHAR},
+      </if>
+      <if test="meloip != null" >
+        meloip = #{meloip,jdbcType=VARCHAR},
+      </if>
+      <if test="meloot != null" >
+        meloot = #{meloot,jdbcType=VARCHAR},
+      </if>
+      <if test="meloit != null" >
+        meloit = #{meloit,jdbcType=VARCHAR},
+      </if>
+      <if test="sloip != null" >
+        sloip = #{sloip,jdbcType=VARCHAR},
+      </if>
+      <if test="sloot != null" >
+        sloot = #{sloot,jdbcType=VARCHAR},
+      </if>
+      <if test="fip != null" >
+        fip = #{fip,jdbcType=VARCHAR},
+      </if>
+      <if test="fit != null" >
+        fit = #{fit,jdbcType=VARCHAR},
+      </if>
+      <if test="pcoip != null" >
+        pcoip = #{pcoip,jdbcType=VARCHAR},
+      </if>
+      <if test="cloit != null" >
+        cloit = #{cloit,jdbcType=VARCHAR},
+      </if>
+      <if test="mejip != null" >
+        mejip = #{mejip,jdbcType=VARCHAR},
+      </if>
+      <if test="mejit != null" >
+        mejit = #{mejit,jdbcType=VARCHAR},
+      </if>
+      <if test="startingAirPressure != null" >
+        starting_air_pressure = #{startingAirPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="siep != null" >
+        siep = #{siep,jdbcType=VARCHAR},
+      </if>
+      <if test="siet != null" >
+        siet = #{siet,jdbcType=VARCHAR},
+      </if>
+      <if test="controlAirPressure != null" >
+        control_air_pressure = #{controlAirPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="smp != null" >
+        smp = #{smp,jdbcType=VARCHAR},
+      </if>
+      <if test="smt != null" >
+        smt = #{smt,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbt != null" >
+        tbbt = #{tbbt,jdbcType=VARCHAR},
+      </if>
+      <if test="meav != null" >
+        meav = #{meav,jdbcType=VARCHAR},
+      </if>
+      <if test="sae1 != null" >
+        sae_1 = #{sae1,jdbcType=VARCHAR},
+      </if>
+      <if test="pog1 != null" >
+        pog_1 = #{pog1,jdbcType=VARCHAR},
+      </if>
+      <if test="ats1 != null" >
+        ats_1 = #{ats1,jdbcType=VARCHAR},
+      </if>
+      <if test="afp1 != null" >
+        afp_1 = #{afp1,jdbcType=VARCHAR},
+      </if>
+      <if test="aft1 != null" >
+        aft_1 = #{aft1,jdbcType=VARCHAR},
+      </if>
+      <if test="alop1 != null" >
+        alop_1 = #{alop1,jdbcType=VARCHAR},
+      </if>
+      <if test="alot1 != null" >
+        alot_1 = #{alot1,jdbcType=VARCHAR},
+      </if>
+      <if test="sae2 != null" >
+        sae_2 = #{sae2,jdbcType=VARCHAR},
+      </if>
+      <if test="pog2 != null" >
+        pog_2 = #{pog2,jdbcType=VARCHAR},
+      </if>
+      <if test="ats2 != null" >
+        ats_2 = #{ats2,jdbcType=VARCHAR},
+      </if>
+      <if test="afp2 != null" >
+        afp_2 = #{afp2,jdbcType=VARCHAR},
+      </if>
+      <if test="aft2 != null" >
+        aft_2 = #{aft2,jdbcType=VARCHAR},
+      </if>
+      <if test="alop2 != null" >
+        alop_2 = #{alop2,jdbcType=VARCHAR},
+      </if>
+      <if test="alot2 != null" >
+        alot_2 = #{alot2,jdbcType=VARCHAR},
+      </if>
+      <if test="sae3 != null" >
+        sae_3 = #{sae3,jdbcType=VARCHAR},
+      </if>
+      <if test="pog3 != null" >
+        pog_3 = #{pog3,jdbcType=VARCHAR},
+      </if>
+      <if test="ats3 != null" >
+        ats_3 = #{ats3,jdbcType=VARCHAR},
+      </if>
+      <if test="afp3 != null" >
+        afp_3 = #{afp3,jdbcType=VARCHAR},
+      </if>
+      <if test="aft3 != null" >
+        aft_3 = #{aft3,jdbcType=VARCHAR},
+      </if>
+      <if test="alop3 != null" >
+        alop_3 = #{alop3,jdbcType=VARCHAR},
+      </if>
+      <if test="alot3 != null" >
+        alot_3 = #{alot3,jdbcType=VARCHAR},
+      </if>
+      <if test="boilerSteamPressure != null" >
+        boiler_steam_pressure = #{boilerSteamPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="boilerWaterLevel != null" >
+        boiler_water_level = #{boilerWaterLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bot != null" >
+        bot = #{bot,jdbcType=VARCHAR},
+      </if>
+      <if test="sternDraught != null" >
+        stern_draught = #{sternDraught,jdbcType=VARCHAR},
+      </if>
+      <if test="portDraft != null" >
+        port_draft = #{portDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="starboardDraft != null" >
+        starboard_draft = #{starboardDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="stemDraft != null" >
+        stem_draft = #{stemDraft,jdbcType=VARCHAR},
+      </if>
+      <if test="trim != null" >
+        trim = #{trim,jdbcType=VARCHAR},
+      </if>
+      <if test="heel != null" >
+        heel = #{heel,jdbcType=VARCHAR},
+      </if>
+      <if test="mefif != null" >
+        mefif = #{mefif,jdbcType=VARCHAR},
+      </if>
+      <if test="mefof != null" >
+        mefof = #{mefof,jdbcType=VARCHAR},
+      </if>
+      <if test="gfif != null" >
+        gfif = #{gfif,jdbcType=VARCHAR},
+      </if>
+      <if test="gfof != null" >
+        gfof = #{gfof,jdbcType=VARCHAR},
+      </if>
+      <if test="bfoif != null" >
+        bfoif = #{bfoif,jdbcType=VARCHAR},
+      </if>
+      <if test="bfoof != null" >
+        bfoof = #{bfoof,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zkthinke.modules.apsat.ship.domain.DeviceInformationPO" >
+    update t_ship_device
+    set imo_number = #{imoNumber,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        device_name = #{deviceName,jdbcType=VARCHAR},
+        revolution_speed = #{revolutionSpeed,jdbcType=VARCHAR},
+        host_load = #{hostLoad,jdbcType=VARCHAR},
+        running_hours = #{runningHours,jdbcType=VARCHAR},
+        sind_speed = #{sindSpeed,jdbcType=VARCHAR},
+        supercharger_speed = #{superchargerSpeed,jdbcType=VARCHAR},
+        mefc = #{mefc,jdbcType=VARCHAR},
+        meloip = #{meloip,jdbcType=VARCHAR},
+        meloot = #{meloot,jdbcType=VARCHAR},
+        meloit = #{meloit,jdbcType=VARCHAR},
+        sloip = #{sloip,jdbcType=VARCHAR},
+        sloot = #{sloot,jdbcType=VARCHAR},
+        fip = #{fip,jdbcType=VARCHAR},
+        fit = #{fit,jdbcType=VARCHAR},
+        pcoip = #{pcoip,jdbcType=VARCHAR},
+        cloit = #{cloit,jdbcType=VARCHAR},
+        mejip = #{mejip,jdbcType=VARCHAR},
+        mejit = #{mejit,jdbcType=VARCHAR},
+        starting_air_pressure = #{startingAirPressure,jdbcType=VARCHAR},
+        siep = #{siep,jdbcType=VARCHAR},
+        siet = #{siet,jdbcType=VARCHAR},
+        control_air_pressure = #{controlAirPressure,jdbcType=VARCHAR},
+        smp = #{smp,jdbcType=VARCHAR},
+        smt = #{smt,jdbcType=VARCHAR},
+        tbbt = #{tbbt,jdbcType=VARCHAR},
+        meav = #{meav,jdbcType=VARCHAR},
+        sae_1 = #{sae1,jdbcType=VARCHAR},
+        pog_1 = #{pog1,jdbcType=VARCHAR},
+        ats_1 = #{ats1,jdbcType=VARCHAR},
+        afp_1 = #{afp1,jdbcType=VARCHAR},
+        aft_1 = #{aft1,jdbcType=VARCHAR},
+        alop_1 = #{alop1,jdbcType=VARCHAR},
+        alot_1 = #{alot1,jdbcType=VARCHAR},
+        sae_2 = #{sae2,jdbcType=VARCHAR},
+        pog_2 = #{pog2,jdbcType=VARCHAR},
+        ats_2 = #{ats2,jdbcType=VARCHAR},
+        afp_2 = #{afp2,jdbcType=VARCHAR},
+        aft_2 = #{aft2,jdbcType=VARCHAR},
+        alop_2 = #{alop2,jdbcType=VARCHAR},
+        alot_2 = #{alot2,jdbcType=VARCHAR},
+        sae_3 = #{sae3,jdbcType=VARCHAR},
+        pog_3 = #{pog3,jdbcType=VARCHAR},
+        ats_3 = #{ats3,jdbcType=VARCHAR},
+        afp_3 = #{afp3,jdbcType=VARCHAR},
+        aft_3 = #{aft3,jdbcType=VARCHAR},
+        alop_3 = #{alop3,jdbcType=VARCHAR},
+        alot_3 = #{alot3,jdbcType=VARCHAR},
+        boiler_steam_pressure = #{boilerSteamPressure,jdbcType=VARCHAR},
+        boiler_water_level = #{boilerWaterLevel,jdbcType=VARCHAR},
+        bot = #{bot,jdbcType=VARCHAR},
+        stern_draught = #{sternDraught,jdbcType=VARCHAR},
+        port_draft = #{portDraft,jdbcType=VARCHAR},
+        starboard_draft = #{starboardDraft,jdbcType=VARCHAR},
+        stem_draft = #{stemDraft,jdbcType=VARCHAR},
+        trim = #{trim,jdbcType=VARCHAR},
+        heel = #{heel,jdbcType=VARCHAR},
+        mefif = #{mefif,jdbcType=VARCHAR},
+        mefof = #{mefof,jdbcType=VARCHAR},
+        gfif = #{gfif,jdbcType=VARCHAR},
+        gfof = #{gfof,jdbcType=VARCHAR},
+        bfoif = #{bfoif,jdbcType=VARCHAR},
+        bfoof = #{bfoof,jdbcType=VARCHAR},
+        data_sync_time = #{dataSyncTime,jdbcType=TIMESTAMP},
+        runstatus1 = #{runstatus1,jdbcType=VARCHAR},
+        runstatus2 = #{runstatus2,jdbcType=VARCHAR},
+        runstatus3 = #{runstatus3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getCount" resultType="java.lang.Integer">
+    select
+      count(*)
+    from
+      t_ship_device
+    where
+      ship_id =#{shipId}
+      and
+      data_sync_time=#{dataSyncTime}
+      and
+      name =#{name}
+  </select>
+
+
+</mapper>
